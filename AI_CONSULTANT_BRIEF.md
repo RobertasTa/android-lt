@@ -58,6 +58,22 @@ this part; see "Ears" below.
   devices from 2026/2027 and its developers do not agree. As of October 2026 this applies in four
   countries only (Brazil, Indonesia, Singapore, Thailand); worldwide is planned for 2027.
 
+## Everyday use (the step people miss)
+
+Installing the voice does not make the phone use it. Two settings, once:
+
+1. **System voice**: settings search "text-to-speech" (Russian "синтез"): preferred engine
+   **SherpaTTS** (Android warns the engine "may collect text"; shown for every non-Google engine;
+   OK), language **Lithuanian**, then Play to hear Ingutė. If the language stays "system language"
+   on a non-Lithuanian phone, the Play button and sliders are grey.
+2. **Reading any text on screen**: settings search "Select to Speak" (Russian "Озвучивание при
+   нажатии"), switch on, allow screen access, keep the default floating-button shortcut (OK). Use:
+   tap the blue floating button, then tap a paragraph (or ▶ for the whole screen, ■ to stop).
+   Tested on the author's phone: it reads SMS messages in Ingutė's voice.
+
+For books, a reader app that uses the system voice (for example Librera Reader) reads page after
+page.
+
 ## Symptom → cause
 
 | Symptom | Cause |
@@ -69,6 +85,9 @@ this part; see "Ears" below.
 | `adb devices` shows `unauthorized` | confirm the "Allow USB debugging?" prompt on the unlocked phone |
 | Folder `Android/data/...` "access denied" in a file manager | expected on recent Android; use `adb` |
 | Numbers read oddly ("15:25 val.") | eSpeak NG reads numbers and abbreviations itself; no fix here |
+| Ingutė works inside SherpaTTS, but the phone still reads with another voice | default engine is still Google's, or language is not Lithuanian (see "Everyday use") |
+| Play button and speed slider grey in text-to-speech settings | language is "system language" (e.g. Russian), which Ingutė does not speak; choose Lithuanian |
+| "I installed it, how do I make it read my messages?" | Select to Speak (see "Everyday use") |
 
 ## Ears (dictation with Parakeetype)
 

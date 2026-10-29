@@ -8,6 +8,8 @@ it can read aloud: the text-to-speech settings, the screen reader, book and arti
 Since 1.1.0 there are **ears** too: speak Lithuanian to the phone and the text appears in any text
 field, also offline (see [Ears](#ears-lithuanian-dictation-parakeetype)).
 
+**Installed it but not sure what next?** → [Everyday use](#everyday-use)
+
 *Page: https://robertasta.github.io/android-lt/en/ · Lietuviškai: [README.md](README.md)*
 
 ## What is here
@@ -151,6 +153,62 @@ other. Once the proposal is merged, uninstall your build and install the F-Droid
 - Lithuanian only. For other languages pick the default model (one model is active at a time).
 - About 910 MB on the phone; Parakeetype needs Android 12 or newer.
 - On short commands it gets roughly one word in six wrong.
+
+## Everyday use
+
+Installing does not yet make the phone speak or listen. Here is what to set up once and how to use
+it afterwards. Menu names differ a little between phones, so the easiest way to find them is the
+**search box in the phone's settings**. The screenshots are from a Xiaomi phone set to Russian.
+
+### Make the phone read with Ingutė's voice
+
+**1. Make Ingutė the phone's voice** (once)
+
+Search the settings for "text-to-speech".
+
+- **Preferred engine** → **SherpaTTS**. Android warns that the engine "may collect text"; it shows
+  this for every voice that is not Google's. SherpaTTS processes the text on the phone → **OK**.
+- **Language** → **Lithuanian**. If it stays at "system language" on a phone that is not in
+  Lithuanian, the buttons are grey and nothing speaks.
+- **Play** (listen to an example): Ingutė should speak. The speed slider is right there.
+
+**2. Have any text on the screen read aloud: SMS, email, articles** (once)
+
+Search the settings for "Select to Speak". It is a Google feature present on most phones with
+Google Play.
+
+- Turn the switch on. Android asks for permission to see the screen; without it the feature could
+  not read the text → **Allow**.
+- A small blue button appears at the edge of the screen. If you are asked how to set it up, leave
+  it as it is and tap **OK**.
+
+**Every day:** open the text → tap the blue button → **tap a paragraph** and Ingutė reads it (or ▶
+to read the whole screen, ■ to stop). You can drag the button elsewhere if it is in the way.
+
+| | | |
+|---|---|---|
+| ![Text-to-speech settings: engine SherpaTTS, language Lithuanian](docs/tts_settings.jpg) | ![Select to Speak with its on/off switch](docs/select_to_speak.jpg) | ![After switching it on, a blue button appears on the right edge](docs/select_to_speak_button.jpg) |
+
+### Make the phone type what you say (ears)
+
+Once Parakeetype with the Lithuanian model is installed (see "Ears" above):
+
+1. Open the place where you type: SMS, notes, search.
+2. **Switch the keyboard to Parakeetype.** In Gboard, long-press the 🌐 globe → "Parakeetype Voice
+   Input". On other keyboards look for a small keyboard icon at the bottom of the screen.
+3. **Hold the big microphone button and speak.** When you let go, the text appears; the app adds
+   full stops, commas and capital letters itself.
+4. **Back to your usual keyboard**: the small keyboard icon on the right, above the Enter key.
+
+### Stuck? Just ask
+
+Lost, or the phone shows something different from this page? Open any AI chat (ChatGPT, Claude,
+Gemini) and paste:
+
+`Read https://raw.githubusercontent.com/RobertasTa/android-lt/main/AI_CONSULTANT_BRIEF.md and help me with Android LT.`
+
+Then say what does not work and attach a screenshot. That AI knows all these steps and the usual
+mistakes, and it will answer in your language.
 
 ## Licences
 

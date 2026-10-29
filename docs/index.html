@@ -68,6 +68,7 @@
   <p class="tagline">Lietuviškas balsas Android telefonui — Ingutė, be interneto.</p>
   <p class="amber">Telefonas garsiai skaito lietuviškai: aiškus „s“ ir kirčiai 189 tūkst. žodžių formų.</p>
   <p class="amber">Nuo 1.1.0 ir <a href="#ausys">ausys</a>: kalbi lietuviškai, telefonas rašo.</p>
+  <p style="color:var(--muted);margin-top:8px">Jau įdiegei, bet nežinai, ką toliau? → <a href="#kasdien">Kaip naudotis kasdien</a></p>
   <div class="actions">
     <a class="btn btn-amber" href="https://github.com/RobertasTa/android-lt/releases/latest">Parsisiųsti balsą</a>
     <a class="btn btn-ghost" href="https://github.com/RobertasTa/android-lt">Kodas GitHub'e</a>
@@ -142,6 +143,30 @@ adb shell am force-stop org.woheller69.ttsengine</code></pre>
     <img src="parakeetype_dictation.jpg" alt="Užrašuose padiktuota: „Labas testas yra. Tikrinam, kaip ausys veikia.“">
   </div>
   <p class="zyma">Tik lietuvių kalba; telefone užima apie 910 MB, reikia Android 12 ar naujesnio. Išbandyta Roberto telefone (Xiaomi 12T Pro, Android 15).</p>
+</section>
+
+<section class="wrap" id="kasdien">
+  <h2>Kaip naudotis kasdien</h2>
+  <p style="color:var(--muted)">Įdiegti dar nereiškia, kad telefonas pats pradės kalbėti ar klausyti. Čia — ką padaryti vieną kartą ir kaip paskui naudotis. Meniu pavadinimai telefonuose šiek tiek skiriasi, todėl paprasčiausia juos rasti <b>nustatymų paieškoje</b>. Ekranai — iš Xiaomi telefono rusiška kalba.</p>
+  <h3 style="margin:22px 0 8px">Kad telefonas skaitytų Ingutės balsu</h3>
+  <ol>
+    <li><b>Ingutė — telefono balsas</b> (vieną kartą). Nustatymų paieškoje įrašyk „teksto į kalbą“ (rusiškai „синтез“). <b>Numatytasis variklis</b> → <b>SherpaTTS</b> (Android perspės, kad variklis „gali rinkti tekstą“ — taip rodo kiekvienam ne Google balsui; spausk OK). <b>Kalba</b> → <b>lietuvių</b>. <b>Klausyti pavyzdžio</b> — turi prabilti Ingutė.</li>
+    <li><b>Kad perskaitytų bet kokį tekstą ekrane</b> (vieną kartą). Nustatymų paieškoje įrašyk „Select to Speak“ (rusiškai „озвуч“ → „Озвучивание при нажатии“), įjunk jungiklį ir leisk matyti ekraną. Ekrano krašte atsiras mėlynas mygtukas.</li>
+    <li><b>Kasdien</b>: atsidaryk SMS, laišką ar straipsnį → paspausk mėlyną mygtuką → paliesk pastraipą, ir Ingutė ją perskaitys (▶ — visą ekraną, ■ — sustabdo).</li>
+  </ol>
+  <div class="shots" style="margin-top:20px;max-width:820px">
+    <img src="tts_settings.jpg" alt="Nustatymai „Синтез речи“: variklis SherpaTTS, kalba lietuvių">
+    <img src="select_to_speak.jpg" alt="„Озвучивание при нажатии“ (Select to Speak) su įjungimo jungikliu">
+    <img src="select_to_speak_button.jpg" alt="Po įjungimo ekrano dešinėje atsiranda mėlynas mygtukas">
+  </div>
+  <h3 style="margin:26px 0 8px">Kad telefonas rašytų, ką sakai (ausys)</h3>
+  <ol>
+    <li>Atsidaryk vietą, kur rašai: SMS, užrašus, paiešką.</li>
+    <li><b>Perjunk klaviatūrą į Parakeetype</b>: Gboard'e ilgai laikyk 🌐 → „Parakeetype balso įvestis“.</li>
+    <li><b>Laikyk mikrofono mygtuką ir kalbėk.</b> Atleidus tekstas atsiranda; taškus, kablelius ir didžiąsias raides programa sudeda pati.</li>
+    <li><b>Atgal į įprastą klaviatūrą</b> — mažas klaviatūros ženkliukas dešinėje, virš Enter.</li>
+  </ol>
+  <p class="zyma"><b>Nesiseka? Nebijok klausti.</b> Atsidaryk bet kurį DI pokalbį (ChatGPT, Claude, Gemini) ir įklijuok: <code>Perskaityk https://raw.githubusercontent.com/RobertasTa/android-lt/main/AI_CONSULTANT_BRIEF.md ir padėk man su Android LT.</code> Tada parašyk, kas neišeina, ir pridėk ekrano nuotrauką — tas DI žino visus šiuos žingsnius ir kalbės su tavimi lietuviškai.</p>
 </section>
 
 <section class="wrap">

@@ -9,6 +9,8 @@ knygų ir straipsnių skaityklėse.
 Nuo 1.1.0 ir **ausys**: kalbi į telefoną lietuviškai, o tekstas atsiranda bet kuriame teksto
 lauke. Irgi be interneto (skyrius [„Ausys“](#ausys-diktavimas-lietuviškai-parakeetype)).
 
+**Jau įdiegei, bet nežinai, ką toliau?** → [Kaip naudotis kasdien](#kaip-naudotis-kasdien)
+
 *Puslapis: https://robertasta.github.io/android-lt/ · In English: [README_EN.md](README_EN.md)*
 
 ## Kas čia yra
@@ -157,6 +159,65 @@ ir įsidiek F-Droid.
 - Tik lietuvių kalba. Kitoms kalboms rinkis numatytąjį modelį (vienu metu veikia vienas).
 - Telefone užima apie 910 MB; Parakeetype reikia Android 12 ar naujesnio.
 - Trumpose komandose klysta maždaug kas šeštą žodį.
+
+## Kaip naudotis kasdien
+
+Įdiegti dar nereiškia, kad telefonas pats pradės kalbėti ar klausyti. Čia — ką padaryti vieną
+kartą ir kaip paskui naudotis. Meniu pavadinimai skirtinguose telefonuose šiek tiek skiriasi,
+todėl paprasčiausia juos rasti **telefono nustatymų paieškoje** (didinamasis stiklas viršuje).
+Ekranai — iš Xiaomi telefono rusiška kalba.
+
+### Kad telefonas skaitytų Ingutės balsu
+
+**1. Padaryk Ingutę telefono balsu** (vieną kartą)
+
+Nustatymų paieškoje įrašyk „teksto į kalbą“ (rusiškai „синтез“, angliškai „text-to-speech“).
+
+- **Numatytasis variklis** (rusiškai „Синтезатор речи по умолчанию“) → pasirink **SherpaTTS**.
+  Android parodys perspėjimą, kad variklis „gali rinkti tekstą“: jį rodo kiekvienam ne Google
+  balsui. SherpaTTS tekstą apdoroja pačiame telefone → spausk **OK**.
+- **Kalba** („Язык“) → **lietuvių**. Jei čia lieka „sistemos kalba“, o telefonas ne lietuviškas,
+  mygtukai pilki ir niekas nekalba.
+- **Klausyti pavyzdžio** („Воспроизвести“) — turi prabilti Ingutė. Greitį keisk čia pat.
+
+**2. Kad perskaitytų bet kokį tekstą ekrane: SMS, laišką, straipsnį** (vieną kartą)
+
+Nustatymų paieškoje įrašyk „Select to Speak“ (rusiškame telefone „озвуч“ →
+„Озвучивание при нажатии“). Tai Google funkcija, ji yra daugumoje telefonų su Google Play.
+
+- Įjunk jungiklį. Android paprašys leidimo matyti ekraną — be jo funkcija negalėtų perskaityti
+  teksto → **Leisti** („Разрешить“).
+- Ekrano krašte atsiras mažas mėlynas mygtukas. Jei klaus, kaip jį nustatyti, — nieko nekeisk,
+  spausk **OK**.
+
+**Kasdien:** atsidaryk tekstą → paspausk mėlyną mygtuką → **paliesk pastraipą**, ir Ingutė ją
+perskaitys (arba ▶ — skaitys visą ekraną iš eilės, ■ — sustabdo). Mygtuką galima nutempti pirštu
+kitur, jei trukdo.
+
+| | | |
+|---|---|---|
+| ![Nustatymai „Синтез речи“: variklis SherpaTTS, kalba lietuvių](docs/tts_settings.jpg) | ![„Озвучивание при нажатии“ (Select to Speak) su įjungimo jungikliu](docs/select_to_speak.jpg) | ![Po įjungimo ekrano dešinėje atsiranda mėlynas mygtukas](docs/select_to_speak_button.jpg) |
+
+### Kad telefonas rašytų, ką sakai (ausys)
+
+Kai Parakeetype su lietuvišku modeliu jau įdiegta (skyrius „Ausys“ aukščiau):
+
+1. Atsidaryk vietą, kur rašai: SMS, užrašus, paiešką.
+2. **Perjunk klaviatūrą į Parakeetype.** Gboard'e ilgai laikyk 🌐 gaubliuką → „Parakeetype balso
+   įvestis“. Kitose klaviatūrose ieškok mažo klaviatūros ženkliuko ekrano apačioje.
+3. **Laikyk didelį mikrofono mygtuką ir kalbėk.** Atleidus tekstas atsiranda; taškus, kablelius ir
+   didžiąsias raides programa sudeda pati.
+4. **Atgal į įprastą klaviatūrą** — mažas klaviatūros ženkliukas dešinėje, virš Enter mygtuko.
+
+### Nesiseka? Nebijok klausti
+
+Pasiklydai ar telefonas rodo ne tai, kas čia parašyta? Atsidaryk bet kurį DI pokalbį (ChatGPT,
+Claude, Gemini) ir įklijuok:
+
+`Perskaityk https://raw.githubusercontent.com/RobertasTa/android-lt/main/AI_CONSULTANT_BRIEF.md ir padėk man su Android LT.`
+
+Tada parašyk, kas neišeina, ir pridėk ekrano nuotrauką. Tas DI žino visus šiuos žingsnius ir
+dažniausias klaidas, o kalbėsis su tavimi lietuviškai.
 
 ## Licencijos
 
