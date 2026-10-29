@@ -1,0 +1,4 @@
+_leidimas/
+*.onnx
+/lt_dict
+PASAS.md
