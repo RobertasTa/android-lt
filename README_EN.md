@@ -1,9 +1,12 @@
-# Android LT: a Lithuanian voice for Android phones
+# Android LT: a Lithuanian voice and ears for Android phones
 
 ![A robotic hand holds a gift box labelled "android-lt" under a glowing globe; next to it: "Android LT, Ingutė on your Android phone" (illustration created with AI)](docs/banner.png)
 
 Ingutė, a Lithuanian synthetic voice, on your Android phone, offline. The phone uses it wherever
 it can read aloud: the text-to-speech settings, the screen reader, book and article readers.
+
+Since 1.1.0 there are **ears** too: speak Lithuanian to the phone and the text appears in any text
+field, also offline (see [Ears](#ears-lithuanian-dictation-parakeetype)).
 
 *Page: https://robertasta.github.io/android-lt/en/ · Lietuviškai: [README.md](README.md)*
 
@@ -16,6 +19,8 @@ it can read aloud: the text-to-speech settings, the screen reader, book and arti
 - **`lt_dict`**: the Lithuanian eSpeak NG dictionary with the stressed syllable for 189,000 word
   forms. Without it the stress is guessed by rules and is wrong in about half of the
   multi-syllable words.
+- **Ears** (`parakeet-lt-kmynas-int8.zip`, 955 MB): a Lithuanian speech recognition model for
+  the Parakeetype voice keyboard.
 
 The voice is played by **SherpaTTS**, a free open-source Android TTS engine. It is not part of
 this package; install it separately (step 1).
@@ -86,6 +91,67 @@ Android 15, SherpaTTS 3.4.
 - `lt_dict` was built for SherpaTTS 3.4 (sherpa-onnx 1.13); check the md5 first on other versions.
 - It is a synthetic voice: natural, but not a person.
 
+## Ears: Lithuanian dictation (Parakeetype)
+
+[Parakeetype](https://github.com/theScrabi/Parakeetype) is an open-source voice keyboard for
+Android (F-Droid). It recognises speech on the phone and never goes online. Its default model
+hears Lithuanian poorly; `parakeet-lt-kmynas-int8.zip` gives it Lithuanian ears.
+
+| word error rate | FLEURS (986 utterances) | short commands (127) |
+|---|---|---|
+| Parakeetype's default model (Parakeet Ultra) | 27.1 % | 80.4 % |
+| with these ears | 10.6 % | 17.0 % |
+
+Measured on a PC with a script that follows Parakeetype's recognition path exactly; tested live on
+Robertas's phone (Xiaomi 12T Pro, Android 15).
+
+**Status (2026-10-29).** For Parakeetype from F-Droid to accept this archive, its author has to
+merge our proposal [theScrabi/Parakeetype#1](https://github.com/theScrabi/Parakeetype/pull/1).
+Until then you can build the app with the Lithuanian model yourself ("Build it yourself" below).
+
+### Installing
+
+1. **Parakeetype**: from F-Droid once the proposal is merged, or built yourself.
+2. **Download to the phone** `parakeet-lt-kmynas-int8.zip` (955 MB) from the
+   [release](https://github.com/RobertasTa/android-lt/releases/latest).
+3. On Parakeetype's main screen enable the keyboard and allow the microphone. Next to "Model not
+   installed" tap "Install", scroll down to the **Parakeet Lithuanian** card → "Import model
+   file" → the archive. The app checks every file's hash; you can delete the archive afterwards.
+4. On the same card: "Set as Active".
+5. **Dictate**: open any text field (notes, for example) and switch the keyboard to Parakeetype.
+   In Gboard, long-press the 🌐 globe and pick "Parakeetype Voice Input". Hold the big microphone
+   button and speak. The first time, the model takes a few seconds to load.
+6. **Back to your usual keyboard**: the small keyboard icon on the right, above the Enter key.
+
+| | | |
+|---|---|---|
+| ![Parakeet Lithuanian as the active model](docs/parakeetype_model.jpg) | ![Switching keyboards: Parakeetype voice input](docs/parakeetype_switch.jpg) | ![Dictated: "Labas testas yra. Tikrinam, kaip ausys veikia."](docs/parakeetype_dictation.jpg) |
+
+### Build it yourself (until the proposal is merged)
+
+You need a computer with Java 17 or newer and the Android SDK: [Android Studio](https://developer.android.com/studio)
+or Google's command-line tools (`android sdk install "platforms;android-37.0" "build-tools;37.0.0"`).
+The first build downloads about 1 GB.
+
+```
+git clone -b add-lithuanian-model https://github.com/RobertasTa/Parakeetype.git
+cd Parakeetype
+./gradlew assembleDebug
+```
+
+On Windows: `gradlew assembleDebug`. Point to the Android SDK with `sdk.dir=...` in
+`local.properties` or the `ANDROID_HOME` variable. Copy the resulting
+`app/build/outputs/apk/debug/app-debug.apk` to the phone's Download folder and tap it in a file
+manager (Xiaomi phones refuse `adb install` without a Mi account). If you already have
+Parakeetype from F-Droid, uninstall it first: apps signed with different keys cannot update each
+other. Once the proposal is merged, uninstall your build and install the F-Droid one.
+
+### Limits of the ears
+
+- Lithuanian only. For other languages pick the default model (one model is active at a time).
+- About 910 MB on the phone; Parakeetype needs Android 12 or newer.
+- On short commands it gets roughly one word in six wrong.
+
 ## Licences
 
 - **Voice** (`lt_LT-ingute-medium.onnx`, `tokens.txt`): NewGenLTU Open RAIL-D 1.0. Free of
@@ -94,6 +160,10 @@ Android 15, SherpaTTS 3.4.
   with the authors' own Python tools.
 - **`lt_dict`** and its sources (`espeak-ng-lt/`): GPL-3.0 (eSpeak NG data). The stress
   positions come from two CC BY 4.0 works; see [THIRD_PARTY.md](THIRD_PARTY.md).
+- **Ears** (`parakeet-lt-kmynas-int8.zip`): CC BY 4.0. NVIDIA Parakeet TDT 0.6B v3, fine-tuned for
+  Lithuanian by Kristijonas Jakubsonas ("kmynas v4", LIEPA-3). Our changes are listed in the
+  archive's `NOTICE.txt`. The Silero VAD inside the archive is MIT. Parakeetype is a separate
+  app (GPL-3.0).
 - Texts in this repository: GPL-3.0 ([LICENSE](LICENSE)).
 
 ## Thanks
@@ -102,7 +172,9 @@ Android 15, SherpaTTS 3.4.
 [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) (k2-fsa),
 [eSpeak NG](https://github.com/espeak-ng/espeak-ng), [Piper](https://github.com/OHF-Voice/piper1-gpl)
 and Michael Hansen; the creators of the **LIEPA** corpus (Vilnius University) and
-**Arūnas Smaliukas** for `g2p-lt-lexicon`.
+**Arūnas Smaliukas** for `g2p-lt-lexicon`; [Parakeetype](https://github.com/theScrabi/Parakeetype)
+(theScrabi), **Kristijonas Jakubsonas** for the Lithuanian Parakeet ("kmynas") and NVIDIA for
+Parakeet.
 
 ## Stuck?
 

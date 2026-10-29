@@ -32,6 +32,11 @@ Three files:
 - `lt_dict` (2.2 MB): eSpeak NG Lithuanian dictionary with the stressed syllable of 189k word
   forms. Optional; needs `adb` from a computer.
 
+Since 1.1.0 also **ears**: `parakeet-lt-kmynas-int8.zip` (955 MB), a Lithuanian speech
+recognition model for the voice keyboard **Parakeetype** (theScrabi, F-Droid,
+`org.schabi.parakeetype`). If the person asks about dictation rather than reading aloud, it is
+this part; see "Ears" below.
+
 ## Facts you must know before answering
 
 - SherpaTTS comes from **F-Droid**, not Google Play. On Google Play a search shows other apps,
@@ -65,6 +70,28 @@ Three files:
 | Folder `Android/data/...` "access denied" in a file manager | expected on recent Android; use `adb` |
 | Numbers read oddly ("15:25 val.") | eSpeak NG reads numbers and abbreviations itself; no fix here |
 
+## Ears (dictation with Parakeetype)
+
+- Parakeetype accepts only models listed in its own code, with fixed file hashes. The Lithuanian
+  entry is proposed in https://github.com/theScrabi/Parakeetype/pull/1. **Check that PR's state
+  first.** If it is not merged, the F-Droid app shows no "Parakeet Lithuanian" card; the person
+  has to wait or build the app from https://github.com/RobertasTa/Parakeetype/tree/add-lithuanian-model
+  (README, "Build it yourself").
+- Import: main screen → "Install" next to "Model not installed" → scroll to the **Parakeet
+  Lithuanian** card (below Parakeet Ultra) → "Import model file" → the ZIP. Then "Set as Active".
+- Switching to it: in Gboard long-press the 🌐 globe → "Parakeetype Voice Input". Back: the
+  small keyboard icon on the right, above Enter.
+- Measured word error rate, Parakeetype's default model vs. these ears: FLEURS 27.1 % → 10.6 %,
+  short commands 80.4 % → 17.0 %. Lithuanian only.
+
+| Symptom | Cause |
+|---|---|
+| Import says the hashes do not match | archive imported on the Parakeet Ultra card; use the Parakeet Lithuanian card |
+| No "Parakeet Lithuanian" card | the installed Parakeetype does not include the PR yet |
+| A self-built app will not install over the F-Droid one | different signing keys; uninstall the other one first |
+| `adb install` fails with `INSTALL_FAILED_USER_RESTRICTED` (Xiaomi) | copy the APK to Download and tap it in a file manager |
+| Lithuanian dictation comes out as Russian or nonsense | the default model is active; set Parakeet Lithuanian as active |
+
 ## Things you must NOT claim
 
 - That this is on Google Play, or that SherpaTTS is made by the authors. It is woheller69's app.
@@ -72,13 +99,16 @@ Three files:
   not expressed.
 - That it is "the first" or "the only" Lithuanian voice for Android.
 - That `lt_dict` works with any SherpaTTS version: it was built and tested for 3.4.
+- That Parakeetype is made by the authors, or that the official app already includes the
+  Lithuanian model, unless the PR above is merged.
 
 ## Licences
 
 Voice: NewGenLTU Open RAIL-D 1.0 (free, commercial use not prohibited, use restrictions apply,
 `LICENSE-VOICE` must travel with it). `lt_dict`: GPL-3.0, sources in `espeak-ng-lt/`, stress
 data from two CC BY 4.0 works (LIEPA annotation, Vilnius University; g2p-lt-lexicon,
-Arūnas Smaliukas). See THIRD_PARTY.md.
+Arūnas Smaliukas). Ears: CC BY 4.0 (NVIDIA Parakeet TDT 0.6B v3, fine-tuned by Kristijonas
+Jakubsonas as "kmynas v4"); Silero VAD inside the archive is MIT. See THIRD_PARTY.md.
 
 ## The author
 

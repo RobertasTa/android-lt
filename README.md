@@ -1,10 +1,13 @@
-# Android LT — lietuviškas balsas Android telefonui
+# Android LT — lietuviškas balsas ir ausys Android telefonui
 
 ![Robotinė ranka laiko dovanų dėžutę su užrašu „android-lt“, virš jos šviečia Žemės rutulys; šalia užrašas „Android LT — Ingutė on your Android phone“ (iliustracija sukurta naudojant DI)](docs/banner.png)
 
 Ingutė, lietuviškas sintetinis balsas, tavo Android telefone. Veikia be interneto. Telefonas ją
 naudoja visur, kur moka skaityti garsiai: „Teksto į kalbą“ nustatymuose, ekrano skaitytuve,
 knygų ir straipsnių skaityklėse.
+
+Nuo 1.1.0 ir **ausys**: kalbi į telefoną lietuviškai, o tekstas atsiranda bet kuriame teksto
+lauke. Irgi be interneto (skyrius [„Ausys“](#ausys-diktavimas-lietuviškai-parakeetype)).
 
 *Puslapis: https://robertasta.github.io/android-lt/ · In English: [README_EN.md](README_EN.md)*
 
@@ -15,6 +18,8 @@ knygų ir straipsnių skaityklėse.
 - **`lt_dict`** — lietuvių eSpeak NG žodynas su kirčio vieta 189 tūkst. žodžių formų. Be jo
   telefonas kirtį spėja ir maždaug pusėje daugiaskiemenių žodžių suklysta: *dãbar, lãbai, Lietùvos*
   vietoje *dabar̃, labaĩ, Lietuvõs*.
+- **Ausys** (`parakeet-lt-kmynas-int8.zip`, 955 MB) — lietuviškas kalbos atpažinimo modelis
+  balso klaviatūrai Parakeetype.
 
 Balsą groja nemokama atviro kodo programa **SherpaTTS**. Jos šis paketas neturi — ją reikia
 įsidiegti atskirai (žr. 1 žingsnį).
@@ -89,6 +94,70 @@ SherpaTTS 3.4.
 - `lt_dict` sudarytas SherpaTTS 3.4 (sherpa-onnx 1.13) — kitai versijai pirmiau patikrink md5.
 - Tai sintetinis balsas: natūralus, bet ne žmogus.
 
+## Ausys: diktavimas lietuviškai (Parakeetype)
+
+[Parakeetype](https://github.com/theScrabi/Parakeetype) yra atviro kodo balso klaviatūra
+Android telefonui (F-Droid). Kalbą ji atpažįsta pačiame telefone ir prie interneto
+nesijungia. Jos numatytasis modelis lietuviškai girdi prastai, o `parakeet-lt-kmynas-int8.zip`
+duoda jai lietuviškas ausis.
+
+| žodžių klaidų dalis | FLEURS (986 sakiniai) | trumpos komandos (127) |
+|---|---|---|
+| Parakeetype numatytasis modelis (Parakeet Ultra) | 27,1 % | 80,4 % |
+| su šiomis ausimis | 10,6 % | 17,0 % |
+
+Matuota kompiuteryje, tiksliai atkartojant Parakeetype atpažinimo kelią; Roberto telefone
+(Xiaomi 12T Pro, Android 15) išbandyta gyvai.
+
+**Būsena (2026-10-29).** Kad F-Droid Parakeetype priimtų šį archyvą, jos autorius turi sujungti
+mūsų pasiūlymą [theScrabi/Parakeetype#1](https://github.com/theScrabi/Parakeetype/pull/1).
+Kol jis nesujungtas, programą su lietuvišku modeliu galima susikompiliuoti pačiam
+(„Pasidaryk pats“ žemiau).
+
+### Kaip įdiegti
+
+1. **Parakeetype**: iš F-Droid, kai pasiūlymas bus priimtas, arba susikompiliuota pačiam.
+2. **Parsisiųsk į telefoną** `parakeet-lt-kmynas-int8.zip` (955 MB) iš
+   [Release](https://github.com/RobertasTa/android-lt/releases/latest).
+3. **Parakeetype** pagrindiniame lange įjunk klaviatūrą ir leisk mikrofoną. Prie „Modelis
+   neįdiegtas“ spausk „Įdiegti“, slink žemyn iki kortelės **Parakeet Lithuanian** →
+   „Importuoti modelio failą“ → archyvas. Programa patikrina visų failų sumas; po to archyvą
+   galima ištrinti.
+4. Toje pačioje kortelėje — „Nustatyti kaip aktyvų“.
+5. **Diktuok**: atidaryk bet kurį teksto lauką (pvz., užrašus) ir perjunk klaviatūrą į
+   Parakeetype. Gboard'e ilgai laikyk 🌐 gaubliuką ir pasirink „Parakeetype balso įvestis“.
+   Laikyk didelį mikrofono mygtuką ir kalbėk. Pirmą kartą modelis kelias sekundes kraunasi.
+6. **Atgal į įprastą klaviatūrą** — mažas klaviatūros ženkliukas dešinėje, virš Enter mygtuko.
+
+| | | |
+|---|---|---|
+| ![Parakeet Lithuanian — aktyvus modelis](docs/parakeetype_model.jpg) | ![Klaviatūros keitimas: Parakeetype balso įvestis](docs/parakeetype_switch.jpg) | ![Padiktuota: „Labas testas yra. Tikrinam, kaip ausys veikia.“](docs/parakeetype_dictation.jpg) |
+
+### Pasidaryk pats (kol pasiūlymas nesujungtas)
+
+Reikia kompiuterio su Java 17 ar naujesne ir Android SDK: [Android Studio](https://developer.android.com/studio)
+arba Google command-line tools (`android sdk install "platforms;android-37.0" "build-tools;37.0.0"`).
+Pirmas kompiliavimas parsisiunčia apie 1 GB.
+
+```
+git clone -b add-lithuanian-model https://github.com/RobertasTa/Parakeetype.git
+cd Parakeetype
+./gradlew assembleDebug
+```
+
+Windows'e — `gradlew assembleDebug`. Android SDK vietą nurodyk `local.properties` faile
+(`sdk.dir=...`) arba `ANDROID_HOME` kintamuoju. Gautą `app/build/outputs/apk/debug/app-debug.apk`
+nukopijuok į telefono „Download“ ir paspausk failų tvarkyklėje (Xiaomi be Mi paskyros neleidžia
+diegti per `adb install`). Jei jau turi Parakeetype iš F-Droid, pirma ją pašalink: skirtingai
+pasirašytos programos viena kitos neatnaujina. Kai pasiūlymas bus priimtas, savo versiją pašalink
+ir įsidiek F-Droid.
+
+### Ausų ribos
+
+- Tik lietuvių kalba. Kitoms kalboms rinkis numatytąjį modelį (vienu metu veikia vienas).
+- Telefone užima apie 910 MB; Parakeetype reikia Android 12 ar naujesnio.
+- Trumpose komandose klysta maždaug kas šeštą žodį.
+
 ## Licencijos
 
 - **Balsas** (`lt_LT-ingute-medium.onnx`, `tokens.txt`) — NewGenLTU Open RAIL-D 1.0:
@@ -97,6 +166,9 @@ SherpaTTS 3.4.
   Ingutė išaugo iš Reginutės modelio, mūsų Python įrankiais.
 - **`lt_dict`** ir jo šaltiniai (`espeak-ng-lt/`) — GPL-3.0 (eSpeak NG duomenys). Kirčių vietos
   sudarytos iš dviejų CC BY 4.0 darbų — žr. [THIRD_PARTY.md](THIRD_PARTY.md).
+- **Ausys** (`parakeet-lt-kmynas-int8.zip`) — CC BY 4.0: NVIDIA Parakeet TDT 0.6B v3, lietuviškai
+  apmokytas Kristijono Jakubsono („kmynas v4“, LIEPA-3). Mūsų pakeitimai surašyti archyvo
+  `NOTICE.txt`. Archyve esantis Silero VAD — MIT. Parakeetype — atskira programa (GPL-3.0).
 - Šio repozitorijos tekstai — GPL-3.0 ([LICENSE](LICENSE)).
 
 ## Ačiū
@@ -104,7 +176,8 @@ SherpaTTS 3.4.
 [SherpaTTS](https://github.com/woheller69/ttsengine) (woheller69), [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx)
 (k2-fsa), [eSpeak NG](https://github.com/espeak-ng/espeak-ng), [Piper](https://github.com/OHF-Voice/piper1-gpl)
 ir Michaelui Hansenui; **LIEPA** garsyno kūrėjams (Vilniaus universitetas) ir **Arūnui Smaliukui**
-už `g2p-lt-lexicon`.
+už `g2p-lt-lexicon`; [Parakeetype](https://github.com/theScrabi/Parakeetype) (theScrabi),
+**Kristijonui Jakubsonui** už lietuvišką Parakeet („kmynas“) ir NVIDIA už Parakeet.
 
 ## Nesiseka?
 

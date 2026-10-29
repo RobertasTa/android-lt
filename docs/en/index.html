@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="ngCuEME8a9C8od6O7mw1EHMId6BzZqJE9-xi-NIyy-Y" />
-<title>Android LT — a Lithuanian voice for Android phones, offline</title>
-<meta name="description" content="Ingutė, a Lithuanian synthetic voice, on your Android phone, offline and free: the s sound restored and the stress set for 189,000 word forms. Works with the free SherpaTTS engine.">
+<title>Android LT — a Lithuanian voice and ears for Android phones, offline</title>
+<meta name="description" content="Ingutė, a Lithuanian synthetic voice, on your Android phone, offline and free: the s sound restored and the stress set for 189,000 word forms. Since 1.1.0 also Lithuanian dictation with the Parakeetype keyboard.">
 <meta property="og:title" content="Android LT — Ingutė on your Android phone">
 <meta property="og:description" content="A Lithuanian voice for the phone, offline: s sound restored, stress for 189,000 word forms. Free.">
 <meta property="og:image" content="https://robertasta.github.io/android-lt/banner.png">
@@ -64,6 +64,7 @@
   <h1>Android LT</h1>
   <p class="tagline">A Lithuanian voice for Android phones: Ingutė, offline.</p>
   <p class="amber">Your phone reads Lithuanian aloud, with clear s sounds and the stress set for 189,000 word forms.</p>
+  <p class="amber">Since 1.1.0 also <a href="#ears">ears</a>: speak Lithuanian, the phone types.</p>
   <div class="actions">
     <a class="btn btn-amber" href="https://github.com/RobertasTa/android-lt/releases/latest">Download the voice</a>
     <a class="btn btn-ghost" href="https://github.com/RobertasTa/android-lt">Code on GitHub</a>
@@ -117,9 +118,32 @@ adb shell am force-stop org.woheller69.ttsengine</code></pre>
   <p class="zyma">Listen to "Dabar labai gera diena, nes Lietuvos rinktinė laimėjo." To undo, rename <code>lt_dict_orig</code> back to <code>lt_dict</code>. Reinstalling SherpaTTS undoes this step.</p>
 </section>
 
+<section class="wrap" id="ears">
+  <h2>Ears: Lithuanian dictation</h2>
+  <p style="color:var(--muted)">Since 1.1.0: speak Lithuanian to the phone and the text appears in any text field. The open-source voice keyboard <a href="https://github.com/theScrabi/Parakeetype">Parakeetype</a> (F-Droid) does this: it recognises speech on the phone and has no internet permission. Its default model hears Lithuanian poorly; our archive <code>parakeet-lt-kmynas-int8.zip</code> (955 MB) gives it Lithuanian ears.</p>
+  <table>
+    <tr><th>word error rate</th><th>FLEURS (986 utterances)</th><th>short commands (127)</th></tr>
+    <tr><td>Parakeetype's default model</td><td>27.1 %</td><td>80.4 %</td></tr>
+    <tr><td>with these ears</td><td>10.6 %</td><td>17.0 %</td></tr>
+  </table>
+  <p class="zyma"><b>Status (2026-10-29):</b> for Parakeetype from F-Droid to accept the archive, its author has to merge our proposal <a href="https://github.com/theScrabi/Parakeetype/pull/1">theScrabi/Parakeetype#1</a>. Until then you can build the app with the Lithuanian model yourself; the <a href="https://github.com/RobertasTa/android-lt/blob/main/README_EN.md#build-it-yourself-until-the-proposal-is-merged">README</a> explains how.</p>
+  <ol style="margin-top:18px">
+    <li><b>Download to the phone</b> <code>parakeet-lt-kmynas-int8.zip</code> from the <a href="https://github.com/RobertasTa/android-lt/releases/latest">release</a>.</li>
+    <li><b>Parakeetype</b>: enable the keyboard, allow the microphone → "Install" → scroll to the <b>Parakeet Lithuanian</b> card → "Import model file" → "Set as Active".</li>
+    <li><b>Dictate</b>: in a text field switch the keyboard to "Parakeetype Voice Input" (in Gboard, long-press 🌐), hold the microphone button and speak.</li>
+    <li><b>Back to your usual keyboard</b>: the small keyboard icon on the right, above Enter.</li>
+  </ol>
+  <div class="shots" style="margin-top:20px;max-width:820px">
+    <img src="../parakeetype_model.jpg" alt="Parakeetype model list: Parakeet Lithuanian marked as the active model">
+    <img src="../parakeetype_switch.jpg" alt="Keyboard switcher with &quot;Parakeetype balso įvestis&quot; (Parakeetype Voice Input) on a Lithuanian-language phone">
+    <img src="../parakeetype_dictation.jpg" alt="Dictated into a note: &quot;Labas testas yra. Tikrinam, kaip ausys veikia.&quot;">
+  </div>
+  <p class="zyma">Lithuanian only; about 910 MB on the phone, needs Android 12 or newer. Tested on Robertas's phone (Xiaomi 12T Pro, Android 15).</p>
+</section>
+
 <section class="wrap">
   <h2>Privacy, plainly</h2>
-  <p style="color:var(--muted)">Text and audio <b>stay on the phone</b>: the voice runs there. This package is only files, with no program that connects anywhere. SherpaTTS goes online only when you ask it to download a language from its own list.</p>
+  <p style="color:var(--muted)">Text and audio <b>stay on the phone</b>: the voice runs there. This package is only files, with no program that connects anywhere. SherpaTTS goes online only when you ask it to download a language from its own list. Parakeetype has no internet permission at all: you download the model archive yourself.</p>
 </section>
 
 <section class="wrap">
@@ -139,6 +163,7 @@ adb shell am force-stop org.woheller69.ttsengine</code></pre>
   <ul>
     <li><b>Voice</b>: NewGenLTU Open RAIL-D 1.0. Free of charge, commercial use is not prohibited, use restrictions apply; when passing it on, include <a href="https://github.com/RobertasTa/android-lt/blob/main/LICENSE-VOICE">LICENSE-VOICE</a> and state the origin. Ingutė was grown from the Reginutė model with the authors' own Python tools.</li>
     <li><b><code>lt_dict</code></b> and its sources: GPL-3.0 (eSpeak NG data). The stress positions come from two CC BY 4.0 works: the LIEPA corpus annotation (Vilnius University) and Arūnas Smaliukas's <code>g2p-lt-lexicon</code> (<a href="https://github.com/RobertasTa/android-lt/blob/main/THIRD_PARTY.md">THIRD_PARTY.md</a>).</li>
+    <li><b>Ears</b>: CC BY 4.0. NVIDIA Parakeet TDT 0.6B v3, fine-tuned for Lithuanian by Kristijonas Jakubsonas ("kmynas v4", LIEPA-3); our changes are listed in the archive's <code>NOTICE.txt</code>. The Silero VAD inside is MIT. Parakeetype is a separate app (GPL-3.0).</li>
   </ul>
 </section>
 
@@ -152,7 +177,7 @@ adb shell am force-stop org.woheller69.ttsengine</code></pre>
 
 <section class="wrap padekos">
   <h2>Thanks</h2>
-  <p><a href="https://github.com/woheller69/ttsengine"><b>SherpaTTS</b></a> (woheller69), <a href="https://github.com/k2-fsa/sherpa-onnx"><b>sherpa-onnx</b></a> (k2-fsa), <a href="https://github.com/espeak-ng/espeak-ng"><b>eSpeak NG</b></a>, <a href="https://github.com/OHF-Voice/piper1-gpl"><b>Piper</b></a> and Michael Hansen; the creators of the <b>LIEPA</b> corpus (Vilnius University) and <b>Arūnas Smaliukas</b>.</p>
+  <p><a href="https://github.com/woheller69/ttsengine"><b>SherpaTTS</b></a> (woheller69), <a href="https://github.com/k2-fsa/sherpa-onnx"><b>sherpa-onnx</b></a> (k2-fsa), <a href="https://github.com/espeak-ng/espeak-ng"><b>eSpeak NG</b></a>, <a href="https://github.com/OHF-Voice/piper1-gpl"><b>Piper</b></a> and Michael Hansen; the creators of the <b>LIEPA</b> corpus (Vilnius University) and <b>Arūnas Smaliukas</b>; <a href="https://github.com/theScrabi/Parakeetype"><b>Parakeetype</b></a> (theScrabi), <b>Kristijonas Jakubsonas</b> for the Lithuanian Parakeet ("kmynas") and NVIDIA for Parakeet.</p>
   <p>Stuck? Paste into any AI chat: <code>Read https://raw.githubusercontent.com/RobertasTa/android-lt/main/AI_CONSULTANT_BRIEF.md and help me with Android LT.</code> Questions: <a href="https://github.com/RobertasTa/android-lt/issues">Issues</a>.</p>
 </section>
 
