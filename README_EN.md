@@ -1,5 +1,7 @@
 # Android LT: a Lithuanian voice for Android phones
 
+![A robotic hand holds a gift box labelled "android-lt" under a glowing globe; next to it: "Android LT, Ingutė on your Android phone" (illustration created with AI)](docs/banner.png)
+
 Ingutė, a Lithuanian synthetic voice, on your Android phone, offline. The phone uses it wherever
 it can read aloud: the text-to-speech settings, the screen reader, book and article readers.
 
@@ -110,6 +112,6 @@ Questions and feedback: [Issues](https://github.com/RobertasTa/android-lt/issues
 ---
 
 Made with AI: Claude (Anthropic) prepared and measured the package together with Robertas;
-tested on Robertas's phone. Our other gifts: [Skaityklė](https://github.com/RobertasTa/skaitykle)
+tested on Robertas's phone; the banner was made with AI. Our other gifts: [Skaityklė](https://github.com/RobertasTa/skaitykle)
 (text to MP3), [Diktuoklė](https://github.com/RobertasTa/diktuokle) (voice dictation),
 [all of them](https://github.com/RobertasTa).
