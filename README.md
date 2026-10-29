@@ -6,7 +6,7 @@ Ingutė, lietuviškas sintetinis balsas, tavo Android telefone. Veikia be intern
 naudoja visur, kur moka skaityti garsiai: „Teksto į kalbą“ nustatymuose, ekrano skaitytuve,
 knygų ir straipsnių skaityklėse.
 
-*In English: [README_EN.md](README_EN.md)*
+*Puslapis: https://robertasta.github.io/android-lt/ · In English: [README_EN.md](README_EN.md)*
 
 ## Kas čia yra
 

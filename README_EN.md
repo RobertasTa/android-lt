@@ -5,7 +5,7 @@
 Ingutė, a Lithuanian synthetic voice, on your Android phone, offline. The phone uses it wherever
 it can read aloud: the text-to-speech settings, the screen reader, book and article readers.
 
-*Lietuviškai: [README.md](README.md)*
+*Page: https://robertasta.github.io/android-lt/en/ · Lietuviškai: [README.md](README.md)*
 
 ## What is here
 
