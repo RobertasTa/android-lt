@@ -1,6 +1,6 @@
 # Android LT: a Lithuanian voice and ears for Android phones
 
-![A robotic hand holds a gift box labelled "android-lt" under a glowing globe; next to it: "Android LT, Ingutė on your Android phone" (illustration created with AI)](docs/banner.png)
+![A robotic hand holds a gift box labelled "android-lt" under a glowing globe; next to it: "Android LT, Ingutė speaks, your phone listens" (illustration created with AI)](docs/banner.png)
 
 Ingutė, a Lithuanian synthetic voice, on your Android phone, offline. The phone uses it wherever
 it can read aloud: the text-to-speech settings, the screen reader, book and article readers.

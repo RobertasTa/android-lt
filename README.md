@@ -1,6 +1,6 @@
 # Android LT — lietuviškas balsas ir ausys Android telefonui
 
-![Robotinė ranka laiko dovanų dėžutę su užrašu „android-lt“, virš jos šviečia Žemės rutulys; šalia užrašas „Android LT — Ingutė on your Android phone“ (iliustracija sukurta naudojant DI)](docs/banner.png)
+![Robotinė ranka laiko dovanų dėžutę su užrašu „android-lt“, virš jos šviečia Žemės rutulys; šalia užrašas „Android LT — Ingutė speaks, your phone listens“ (iliustracija sukurta naudojant DI)](docs/banner.png)
 
 Ingutė, lietuviškas sintetinis balsas, tavo Android telefone. Veikia be interneto. Telefonas ją
 naudoja visur, kur moka skaityti garsiai: „Teksto į kalbą“ nustatymuose, ekrano skaitytuve,
