@@ -6,8 +6,12 @@ Ingutė, lietuviškas sintetinis balsas, tavo Android telefone. Veikia be intern
 naudoja visur, kur moka skaityti garsiai: „Teksto į kalbą“ nustatymuose, ekrano skaitytuve,
 knygų ir straipsnių skaityklėse.
 
-Nuo 1.1.0 ir **ausys**: kalbi į telefoną lietuviškai, o tekstas atsiranda bet kuriame teksto
-lauke. Irgi be interneto (skyrius [„Ausys“](#ausys-diktavimas-lietuviškai-parakeetype)).
+Ir **ausys**: kalbi į telefoną lietuviškai, o tekstas atsiranda bet kuriame teksto lauke —
+SMS, užrašuose, ChatGPT, Claude ar Gemini programoje. Irgi be interneto (skyrius
+[„Ausys“](#ausys-diktavimas-lietuviškai-parakeetype)).
+
+**Nuo 1.2.0 — dvi paruoštos programos:** parsisiunti, įdiegi, ir veikia. Nereikia nei F-Droid,
+nei laido, nei kompiuterio → [Kaip įdiegti](#kaip-įdiegti-apie-5-min)
 
 **Jau įdiegei, bet nežinai, ką toliau?** → [Kaip naudotis kasdien](#kaip-naudotis-kasdien)
 
@@ -15,18 +19,58 @@ lauke. Irgi be interneto (skyrius [„Ausys“](#ausys-diktavimas-lietuviškai-p
 
 ## Kas čia yra
 
-- **Ingutės balsas** sherpa-onnx formatu (`lt_LT-ingute-medium.onnx`, 63 MB) ir **`tokens.txt`**
-  su „s“ pataisa: be jos telefone dingsta daug „s“ garsų („pasiimk skėtį“ skamba kaip „paimk kėtį“).
-- **`lt_dict`** — lietuvių eSpeak NG žodynas su kirčio vieta 189 tūkst. žodžių formų. Be jo
-  telefonas kirtį spėja ir maždaug pusėje daugiaskiemenių žodžių suklysta: *dãbar, lãbai, Lietùvos*
-  vietoje *dabar̃, labaĩ, Lietuvõs*.
-- **Ausys** (`parakeet-lt-kmynas-int8.zip`, 955 MB) — lietuviškas kalbos atpažinimo modelis
-  balso klaviatūrai Parakeetype.
+- **`Ingute-1.0.apk`** (151 MB) — programa „Ingutė“: lietuviškas telefono balsas. Viduje jau yra
+  Ingutės balsas, „s“ pataisa ir kirčių žodynas; įdiegta ji pati tampa telefono balsu. Tai
+  [SherpaTTS](https://github.com/woheller69/ttsEngine) 3.4 (woheller69) su mūsų lietuviškais priedais
+  ([kodas](https://github.com/RobertasTa/ttsEngine/tree/ingute)).
+- **`Parakeetype-LT-0.5.0-lt2.apk`** (59 MB) — balso klaviatūra „Parakeetype LT“: lietuviškas diktavimas.
+  Tai [Parakeetype](https://github.com/theScrabi/Parakeetype) (theScrabi), kurioje lietuviškas modelis
+  yra pirmas ir numatytasis ([kodas](https://github.com/RobertasTa/Parakeetype/tree/lt-build)).
+  Interneto leidimo neturi.
+- **Ausys** (`parakeet-lt-kmynas-int8.zip`, 955 MB) — lietuviškas kalbos atpažinimo modelis šiai
+  klaviatūrai; programa pati parodo, kur jį atsisiųsti.
+- Pažengusiems, atskirai: **Ingutės balsas** sherpa-onnx formatu (`lt_LT-ingute-medium.onnx`, 63 MB),
+  **`tokens.txt`** su „s“ pataisa (be jos „pasiimk skėtį“ skamba kaip „paimk kėtį“) ir **`lt_dict`** —
+  eSpeak NG žodynas su kirčio vieta 189 tūkst. žodžių formų (be jo telefonas suklysta maždaug pusėje
+  daugiaskiemenių žodžių: *dãbar, lãbai, Lietùvos* vietoje *dabar̃, labaĩ, Lietuvõs*).
 
-Balsą groja nemokama atviro kodo programa **SherpaTTS**. Jos šis paketas neturi — ją reikia
-įsidiegti atskirai (žr. 1 žingsnį).
+Abi programos pasirašytos mūsų raktu, sertifikato SHA-256
+`8679aa5fbfd9f9f96d53ba761e72c9b0f7a361ffdc8493e33bb905e077afaf7f`; failų sumos — `SHA256SUMS.txt` leidime.
 
-## Kaip įdiegti (apie 10 min.)
+## Kaip įdiegti (apie 5 min.)
+
+Reikia Android 10 ar naujesnio (ausims — Android 12). Abu failai — [leidime](https://github.com/RobertasTa/android-lt/releases/latest).
+
+### Balsas — „Ingutė“
+
+1. **Parsisiųsk į telefoną** `Ingute-1.0.apk` ir paspausk jį (naršyklėje arba failų tvarkyklėje,
+   aplanke „Download“). Telefonas paklaus, ar leisti diegti programas iš šio šaltinio — **leisk**.
+2. **„Įdiegti“.** Atidaryti programos nereikia: Ingutė įsidiegia pati.
+3. **Telefono nustatymuose** → „Teksto į kalbą išvestis“ → variklis **Ingutė**, kalba **lietuvių** →
+   „Klausyti pavyzdžio“. Ingutė prabyla — jau su kirčiais.
+
+### Ausys — „Parakeetype LT“
+
+1. **Parsisiųsk ir įdiek** `Parakeetype-LT-0.5.0-lt2.apk`. Jei „Google Play Protect“ pasiūlys programą
+   patikrinti, spausk **„Patikrinti“**, po to **„Įdiegti“** (mums atsakė: „Atrodo, kad programa saugi“).
+2. **Atidaryk** ją, leisk mikrofoną, prie „Modelis neįdiegtas“ spausk **„Įdiegti“**.
+3. Kortelėje **„Parakeet Lithuanian (Default)“** — **„Atsisiųsti naršyklėje“** (955 MB, geriau per Wi-Fi).
+   Kai atsisiųs — **„Importuoti modelio failą“** → `parakeet-lt-kmynas-int8.zip`. Po minutės kortelė
+   rodo **„Aktyvus modelis“**; archyvą galima ištrinti.
+4. Pradžios ekrane prie „Klaviatūra neįgalinta“ → **„Atidaryti nustatymus“** → įjunk Parakeetype.
+   Android įspės, kad klaviatūra „gali rinkti viską, ką įvedate“: tai rodoma kiekvienai klaviatūrai,
+   o ši interneto leidimo neturi, tad tekstas iš telefono niekur neišeina → **OK**.
+5. **Diktuok**: bet kuriame teksto lauke Gboard'e ilgai laikyk 🌐 → **„Parakeetype balso įvestis“**,
+   laikyk didelį mikrofono mygtuką ir kalbėk.
+
+| | | | |
+|---|---|---|---|
+| ![Nustatymai: variklis Ingutė, kalba lietuvių](docs/apk_ingute_nustatymai.jpg) | ![Parakeet Lithuanian — pirmas ir numatytasis](docs/apk_modelis.jpg) | ![Po importo: „Aktyvus modelis“](docs/apk_aktyvus.jpg) | ![Padiktuota: „Labas, tai yra lietuviškos ausys Android telefonui“](docs/apk_padiktuota.jpg) |
+
+Programos ekranuose — lietuviškai, sistemos languose — rusiškai (tokia telefono kalba).
+
+<details>
+<summary><b>Pažengusiems: balsas per SherpaTTS iš F-Droid</b> (be mūsų programos, apie 10 min.)</summary>
 
 1. **Įsidiek SherpaTTS iš F-Droid** — Google Play'uje jos **nėra** (paieška ten rodo kitas,
    reklamines programas).
@@ -74,6 +118,8 @@ Atidaryk SherpaTTS ir paklausyk: „Dabar labai gera diena, nes Lietuvos rinktin
 Po to USB derinimą gali išjungti. Grąžinti: tą patį aplanką, `lt_dict_orig` → `lt_dict`.
 Iš naujo įdiegus SherpaTTS ar išvalius jos duomenis, 5 žingsnį reikia kartoti.
 
+</details>
+
 ## Ką rodo matavimai
 
 Lietuviškas kalbos atpažinimo modelis klausė 12 kasdienių sakinių (be skaičių):
@@ -111,38 +157,19 @@ duoda jai lietuviškas ausis.
 Matuota kompiuteryje, tiksliai atkartojant Parakeetype atpažinimo kelią; Roberto telefone
 (Xiaomi 12T Pro, Android 15) išbandyta gyvai.
 
-**Būsena (2026-10-29).** Kad F-Droid Parakeetype priimtų šį archyvą, jos autorius turi sujungti
-mūsų pasiūlymą [theScrabi/Parakeetype#1](https://github.com/theScrabi/Parakeetype/pull/1).
-Kol jis nesujungtas, programą su lietuvišku modeliu galima susikompiliuoti pačiam
-(„Pasidaryk pats“ žemiau).
+**Kaip įdiegti** — žr. [„Ausys — Parakeetype LT“](#ausys--parakeetype-lt) aukščiau: mūsų paruošta
+programa. Kai Parakeetype autorius sujungs mūsų pasiūlymą
+[theScrabi/Parakeetype#1](https://github.com/theScrabi/Parakeetype/pull/1), lietuvišką modelį siūlys
+ir F-Droid Parakeetype.
 
-### Kaip įdiegti
-
-1. **Parakeetype**: iš F-Droid, kai pasiūlymas bus priimtas, arba susikompiliuota pačiam.
-2. **Parsisiųsk į telefoną** `parakeet-lt-kmynas-int8.zip` (955 MB) iš
-   [Release](https://github.com/RobertasTa/android-lt/releases/latest).
-3. **Parakeetype** pagrindiniame lange įjunk klaviatūrą ir leisk mikrofoną. Prie „Modelis
-   neįdiegtas“ spausk „Įdiegti“, slink žemyn iki kortelės **Parakeet Lithuanian** →
-   „Importuoti modelio failą“ → archyvas. Programa patikrina visų failų sumas; po to archyvą
-   galima ištrinti.
-4. Toje pačioje kortelėje — „Nustatyti kaip aktyvų“.
-5. **Diktuok**: atidaryk bet kurį teksto lauką (pvz., užrašus) ir perjunk klaviatūrą į
-   Parakeetype. Gboard'e ilgai laikyk 🌐 gaubliuką ir pasirink „Parakeetype balso įvestis“.
-   Laikyk didelį mikrofono mygtuką ir kalbėk. Pirmą kartą modelis kelias sekundes kraunasi.
-6. **Atgal į įprastą klaviatūrą** — mažas klaviatūros ženkliukas dešinėje, virš Enter mygtuko.
-
-| | | |
-|---|---|---|
-| ![Parakeet Lithuanian — aktyvus modelis](docs/parakeetype_model.jpg) | ![Klaviatūros keitimas: Parakeetype balso įvestis](docs/parakeetype_switch.jpg) | ![Padiktuota: „Labas testas yra. Tikrinam, kaip ausys veikia.“](docs/parakeetype_dictation.jpg) |
-
-### Pasidaryk pats (kol pasiūlymas nesujungtas)
+### Pasidaryk pats
 
 Reikia kompiuterio su Java 17 ar naujesne ir Android SDK: [Android Studio](https://developer.android.com/studio)
 arba Google command-line tools (`android sdk install "platforms;android-37.0" "build-tools;37.0.0"`).
 Pirmas kompiliavimas parsisiunčia apie 1 GB.
 
 ```
-git clone -b add-lithuanian-model https://github.com/RobertasTa/Parakeetype.git
+git clone -b lt-build https://github.com/RobertasTa/Parakeetype.git
 cd Parakeetype
 ./gradlew assembleDebug
 ```
@@ -150,9 +177,9 @@ cd Parakeetype
 Windows'e — `gradlew assembleDebug`. Android SDK vietą nurodyk `local.properties` faile
 (`sdk.dir=...`) arba `ANDROID_HOME` kintamuoju. Gautą `app/build/outputs/apk/debug/app-debug.apk`
 nukopijuok į telefono „Download“ ir paspausk failų tvarkyklėje (Xiaomi be Mi paskyros neleidžia
-diegti per `adb install`). Jei jau turi Parakeetype iš F-Droid, pirma ją pašalink: skirtingai
-pasirašytos programos viena kitos neatnaujina. Kai pasiūlymas bus priimtas, savo versiją pašalink
-ir įsidiek F-Droid.
+diegti per `adb install`). Jei jau turi „Parakeetype LT“ iš mūsų leidimo, pirma ją pašalink:
+skirtingai pasirašytos programos viena kitos neatnaujina. Balso programos kodas — šaka
+[`ingute`](https://github.com/RobertasTa/ttsEngine/tree/ingute), kompiliuojama taip pat.
 
 ### Ausų ribos
 
@@ -173,9 +200,10 @@ Ekranai — iš Xiaomi telefono rusiška kalba.
 
 Nustatymų paieškoje įrašyk „teksto į kalbą“ (rusiškai „синтез“, angliškai „text-to-speech“).
 
-- **Numatytasis variklis** (rusiškai „Синтезатор речи по умолчанию“) → pasirink **SherpaTTS**.
-  Android parodys perspėjimą, kad variklis „gali rinkti tekstą“: jį rodo kiekvienam ne Google
-  balsui. SherpaTTS tekstą apdoroja pačiame telefone → spausk **OK**.
+- **Numatytasis variklis** (rusiškai „Синтезатор речи по умолчанию“) → pasirink **Ingutė**
+  (jei diegei pažengusiųjų keliu — **SherpaTTS**). Android parodys perspėjimą, kad variklis „gali
+  rinkti tekstą“: jį rodo kiekvienam ne Google balsui. Ingutė tekstą apdoroja pačiame telefone →
+  spausk **OK**.
 - **Kalba** („Язык“) → **lietuvių**. Jei čia lieka „sistemos kalba“, o telefonas ne lietuviškas,
   mygtukai pilki ir niekas nekalba.
 - **Klausyti pavyzdžio** („Воспроизвести“) — turi prabilti Ingutė. Greitį keisk čia pat.
@@ -221,6 +249,10 @@ dažniausias klaidas, o kalbėsis su tavimi lietuviškai.
 
 ## Licencijos
 
+- **Programos** — GPL-3.0, kaip ir jų originalai: „Ingutė“ — SherpaTTS (woheller69) su mūsų
+  pakeitimais ([kodas](https://github.com/RobertasTa/ttsEngine/tree/ingute)); „Parakeetype LT“ —
+  Parakeetype (theScrabi) su mūsų pakeitimais ([kodas](https://github.com/RobertasTa/Parakeetype/tree/lt-build)).
+  Programoje „Ingutė“ esantis balsas ir žodynas — pagal žemiau nurodytas licencijas.
 - **Balsas** (`lt_LT-ingute-medium.onnx`, `tokens.txt`) — NewGenLTU Open RAIL-D 1.0:
   naudoti galima laisvai ir nemokamai, komercinio naudojimo nedraudžia, galioja naudojimo
   apribojimai; perduodant toliau kartu perduoti [LICENSE-VOICE](LICENSE-VOICE) ir nurodyti kilmę.

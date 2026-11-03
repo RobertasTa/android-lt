@@ -5,8 +5,11 @@
 Ingutė, a Lithuanian synthetic voice, on your Android phone, offline. The phone uses it wherever
 it can read aloud: the text-to-speech settings, the screen reader, book and article readers.
 
-Since 1.1.0 there are **ears** too: speak Lithuanian to the phone and the text appears in any text
-field, also offline (see [Ears](#ears-lithuanian-dictation-parakeetype)).
+There are **ears** too: speak Lithuanian to the phone and the text appears in any text field:
+SMS, notes, the ChatGPT, Claude or Gemini app. Also offline (see [Ears](#ears-lithuanian-dictation-parakeetype)).
+
+**Since 1.2.0 there are two ready-made apps:** download, install, done. No F-Droid, no cable, no
+computer → [Installing](#installing-about-5-minutes)
 
 **Installed it but not sure what next?** → [Everyday use](#everyday-use)
 
@@ -14,20 +17,61 @@ field, also offline (see [Ears](#ears-lithuanian-dictation-parakeetype)).
 
 ## What is here
 
-- **Ingutė** in sherpa-onnx format (`lt_LT-ingute-medium.onnx`, 63 MB) and a **`tokens.txt`** with
-  an "s" fix. eSpeak NG writes Lithuanian /s/ as `ʂ` in many positions, a symbol the voice
-  hardly learned, so without the fix many s sounds disappear ("pasiimk skėtį" comes out as
-  "paimk kėtį").
-- **`lt_dict`**: the Lithuanian eSpeak NG dictionary with the stressed syllable for 189,000 word
-  forms. Without it the stress is guessed by rules and is wrong in about half of the
-  multi-syllable words.
-- **Ears** (`parakeet-lt-kmynas-int8.zip`, 955 MB): a Lithuanian speech recognition model for
-  the Parakeetype voice keyboard.
+- **`Ingute-1.0.apk`** (151 MB): the app "Ingutė", a Lithuanian voice for the phone. The voice, the
+  "s" fix and the stress dictionary are already inside; once installed it becomes the phone's voice
+  by itself. It is [SherpaTTS](https://github.com/woheller69/ttsEngine) 3.4 (woheller69) with our
+  Lithuanian additions ([source](https://github.com/RobertasTa/ttsEngine/tree/ingute)).
+- **`Parakeetype-LT-0.5.0-lt2.apk`** (59 MB): the voice keyboard "Parakeetype LT" for Lithuanian
+  dictation. It is [Parakeetype](https://github.com/theScrabi/Parakeetype) (theScrabi) with the
+  Lithuanian model first and as the default ([source](https://github.com/RobertasTa/Parakeetype/tree/lt-build)).
+  It has no internet permission.
+- **Ears** (`parakeet-lt-kmynas-int8.zip`, 955 MB): the Lithuanian speech recognition model for that
+  keyboard; the app shows where to download it.
+- For advanced users, separately: **Ingutė** in sherpa-onnx format (`lt_LT-ingute-medium.onnx`,
+  63 MB), a **`tokens.txt`** with an "s" fix (eSpeak NG writes Lithuanian /s/ as `ʂ` in many
+  positions, a symbol the voice hardly learned, so "pasiimk skėtį" comes out as "paimk kėtį"), and
+  **`lt_dict`**, the eSpeak NG dictionary with the stressed syllable for 189,000 word forms (without
+  it the stress is wrong in about half of the multi-syllable words).
 
-The voice is played by **SherpaTTS**, a free open-source Android TTS engine. It is not part of
-this package; install it separately (step 1).
+Both apps are signed with our key, certificate SHA-256
+`8679aa5fbfd9f9f96d53ba761e72c9b0f7a361ffdc8493e33bb905e077afaf7f`; file hashes are in `SHA256SUMS.txt`
+in the release.
 
-## Installing (about 10 minutes)
+## Installing (about 5 minutes)
+
+Android 10 or newer (Android 12 for the ears). Both files are in the
+[release](https://github.com/RobertasTa/android-lt/releases/latest).
+
+### Voice: "Ingutė"
+
+1. **Download** `Ingute-1.0.apk` to the phone and tap it (in the browser or a file manager, in the
+   Download folder). The phone asks whether to allow installing apps from this source: **allow** it.
+2. **Install.** No need to open the app: Ingutė installs herself.
+3. **Phone settings** → "Text-to-speech output" → engine **Ingutė**, language **Lithuanian** →
+   "Listen to an example". Ingutė speaks, with the stress already right.
+
+### Ears: "Parakeetype LT"
+
+1. **Download and install** `Parakeetype-LT-0.5.0-lt2.apk`. If Google Play Protect offers to scan
+   the app, tap **Scan**, then **Install** (for us it answered that the app looks safe).
+2. **Open** it, allow the microphone, and next to "Model not installed" tap **Install**.
+3. On the **"Parakeet Lithuanian (Default)"** card: **Download in browser** (955 MB, Wi-Fi is better).
+   When it has downloaded: **Import model file** → `parakeet-lt-kmynas-int8.zip`. A minute later the
+   card says **Active model**; you can delete the archive.
+4. On the start screen, next to "Keyboard not enabled" → **Open settings** → turn Parakeetype on.
+   Android warns that the keyboard "may collect everything you type": it says this for every
+   keyboard, and this one has no internet permission, so the text never leaves the phone → **OK**.
+5. **Dictate**: in any text field long-press 🌐 in Gboard → **Parakeetype Voice Input**, hold the big
+   microphone button and speak.
+
+| | | | |
+|---|---|---|---|
+| ![Settings: engine Ingutė, language Lithuanian](docs/apk_ingute_nustatymai.jpg) | ![Parakeet Lithuanian first and default](docs/apk_modelis.jpg) | ![After the import: Active model](docs/apk_aktyvus.jpg) | ![Dictated: "Labas, tai yra lietuviškos ausys Android telefonui"](docs/apk_padiktuota.jpg) |
+
+The app screenshots are in Lithuanian, the system dialogs in Russian (the phone's language).
+
+<details>
+<summary><b>Advanced: the voice through SherpaTTS from F-Droid</b> (without our app, about 10 minutes)</summary>
 
 1. **Install SherpaTTS from F-Droid.** It is not on Google Play; searching there shows other,
    ad-supported apps.
@@ -71,6 +115,8 @@ Open SherpaTTS and listen to "Dabar labai gera diena, nes Lietuvos rinktinė lai
 You can switch USB debugging off afterwards. To undo, rename `lt_dict_orig` back to `lt_dict`.
 Reinstalling SherpaTTS or clearing its data undoes step 5.
 
+</details>
+
 ## Measurements
 
 A Lithuanian speech recognition model listened to 12 everyday sentences (no numbers):
@@ -107,36 +153,18 @@ hears Lithuanian poorly; `parakeet-lt-kmynas-int8.zip` gives it Lithuanian ears.
 Measured on a PC with a script that follows Parakeetype's recognition path exactly; tested live on
 Robertas's phone (Xiaomi 12T Pro, Android 15).
 
-**Status (2026-10-29).** For Parakeetype from F-Droid to accept this archive, its author has to
-merge our proposal [theScrabi/Parakeetype#1](https://github.com/theScrabi/Parakeetype/pull/1).
-Until then you can build the app with the Lithuanian model yourself ("Build it yourself" below).
+**Installing**: see ["Ears: Parakeetype LT"](#ears-parakeetype-lt) above, our ready-made app. Once
+Parakeetype's author merges our proposal [theScrabi/Parakeetype#1](https://github.com/theScrabi/Parakeetype/pull/1),
+the F-Droid Parakeetype will offer the Lithuanian model too.
 
-### Installing
-
-1. **Parakeetype**: from F-Droid once the proposal is merged, or built yourself.
-2. **Download to the phone** `parakeet-lt-kmynas-int8.zip` (955 MB) from the
-   [release](https://github.com/RobertasTa/android-lt/releases/latest).
-3. On Parakeetype's main screen enable the keyboard and allow the microphone. Next to "Model not
-   installed" tap "Install", scroll down to the **Parakeet Lithuanian** card → "Import model
-   file" → the archive. The app checks every file's hash; you can delete the archive afterwards.
-4. On the same card: "Set as Active".
-5. **Dictate**: open any text field (notes, for example) and switch the keyboard to Parakeetype.
-   In Gboard, long-press the 🌐 globe and pick "Parakeetype Voice Input". Hold the big microphone
-   button and speak. The first time, the model takes a few seconds to load.
-6. **Back to your usual keyboard**: the small keyboard icon on the right, above the Enter key.
-
-| | | |
-|---|---|---|
-| ![Parakeet Lithuanian as the active model](docs/parakeetype_model.jpg) | ![Switching keyboards: Parakeetype voice input](docs/parakeetype_switch.jpg) | ![Dictated: "Labas testas yra. Tikrinam, kaip ausys veikia."](docs/parakeetype_dictation.jpg) |
-
-### Build it yourself (until the proposal is merged)
+### Build it yourself
 
 You need a computer with Java 17 or newer and the Android SDK: [Android Studio](https://developer.android.com/studio)
 or Google's command-line tools (`android sdk install "platforms;android-37.0" "build-tools;37.0.0"`).
 The first build downloads about 1 GB.
 
 ```
-git clone -b add-lithuanian-model https://github.com/RobertasTa/Parakeetype.git
+git clone -b lt-build https://github.com/RobertasTa/Parakeetype.git
 cd Parakeetype
 ./gradlew assembleDebug
 ```
@@ -145,8 +173,9 @@ On Windows: `gradlew assembleDebug`. Point to the Android SDK with `sdk.dir=...`
 `local.properties` or the `ANDROID_HOME` variable. Copy the resulting
 `app/build/outputs/apk/debug/app-debug.apk` to the phone's Download folder and tap it in a file
 manager (Xiaomi phones refuse `adb install` without a Mi account). If you already have
-Parakeetype from F-Droid, uninstall it first: apps signed with different keys cannot update each
-other. Once the proposal is merged, uninstall your build and install the F-Droid one.
+"Parakeetype LT" from our release, uninstall it first: apps signed with different keys cannot
+update each other. The voice app's source is branch [`ingute`](https://github.com/RobertasTa/ttsEngine/tree/ingute);
+it builds the same way.
 
 ### Limits of the ears
 
@@ -166,8 +195,9 @@ it afterwards. Menu names differ a little between phones, so the easiest way to 
 
 Search the settings for "text-to-speech".
 
-- **Preferred engine** → **SherpaTTS**. Android warns that the engine "may collect text"; it shows
-  this for every voice that is not Google's. SherpaTTS processes the text on the phone → **OK**.
+- **Preferred engine** → **Ingutė** (or **SherpaTTS** if you took the advanced route). Android warns
+  that the engine "may collect text"; it shows this for every voice that is not Google's. Ingutė
+  processes the text on the phone → **OK**.
 - **Language** → **Lithuanian**. If it stays at "system language" on a phone that is not in
   Lithuanian, the buttons are grey and nothing speaks.
 - **Play** (listen to an example): Ingutė should speak. The speed slider is right there.
@@ -212,6 +242,10 @@ mistakes, and it will answer in your language.
 
 ## Licences
 
+- **Apps**: GPL-3.0, like their originals. "Ingutė" is SherpaTTS (woheller69) with our changes
+  ([source](https://github.com/RobertasTa/ttsEngine/tree/ingute)); "Parakeetype LT" is Parakeetype
+  (theScrabi) with our changes ([source](https://github.com/RobertasTa/Parakeetype/tree/lt-build)).
+  The voice and dictionary inside "Ingutė" are under the licences below.
 - **Voice** (`lt_LT-ingute-medium.onnx`, `tokens.txt`): NewGenLTU Open RAIL-D 1.0. Free of
   charge, commercial use is not prohibited, use restrictions apply; when passing it on, include
   [LICENSE-VOICE](LICENSE-VOICE) and state the origin. Ingutė was grown from the Reginutė model

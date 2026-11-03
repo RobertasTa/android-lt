@@ -67,10 +67,11 @@
   <h1>Android LT — lietuviškas balsas ir diktavimas telefone</h1>
   <p class="tagline">Lietuviškas balsas Android telefonui — Ingutė, be interneto.</p>
   <p class="amber">Telefonas garsiai skaito lietuviškai: aiškus „s“ ir kirčiai 189 tūkst. žodžių formų.</p>
-  <p class="amber">Nuo 1.1.0 ir <a href="#ausys">ausys</a>: kalbi lietuviškai, telefonas rašo.</p>
+  <p class="amber">Ir <a href="#ausys">ausys</a>: kalbi lietuviškai, telefonas rašo — SMS, užrašuose, ChatGPT, Claude ar Gemini programoje.</p>
+  <p class="amber">Nuo 1.2.0 — <a href="#idiegti">dvi paruoštos programos</a>: parsisiunti, įdiegi, ir veikia. Be F-Droid, be laido, be kompiuterio.</p>
   <p style="color:var(--muted);margin-top:8px">Jau įdiegei, bet nežinai, ką toliau? → <a href="#kasdien">Kaip naudotis kasdien</a></p>
   <div class="actions">
-    <a class="btn btn-amber" href="https://github.com/RobertasTa/android-lt/releases/latest">Parsisiųsti balsą</a>
+    <a class="btn btn-amber" href="https://github.com/RobertasTa/android-lt/releases/latest">Parsisiųsti programas</a>
     <a class="btn btn-ghost" href="https://github.com/RobertasTa/android-lt">Kodas GitHub'e</a>
     <a class="btn btn-ghost" href="https://huggingface.co/RobertasTa/android-lt">Hugging Face</a>
   </div>
@@ -82,7 +83,7 @@
   <div class="grid">
     <div class="card"><h3>Kad telefonas skaitytų lietuviškai</h3><p>Ingutė tampa telefono „Teksto į kalbą“ balsu. Ją naudoja programos, kurios moka skaityti garsiai: straipsnių ir knygų skaityklės, ekrano skaitytuvas.</p></div>
     <div class="card"><h3>Be interneto</h3><p>Balsas veikia pačiame telefone. Internetas reikalingas tik vieną kartą — programai ir balsui parsisiųsti.</p></div>
-    <div class="card"><h3>Nemokamai</h3><p>Ir balsas, ir programa SherpaTTS — nemokami, atviro kodo, be reklamų ir paskyrų.</p></div>
+    <div class="card"><h3>Nemokamai</h3><p>Ir balsas, ir abi programos — nemokami, atviro kodo, be reklamų ir paskyrų.</p></div>
   </div>
 </section>
 
@@ -95,9 +96,33 @@
   <p class="zyma">Lietuviškas kalbos atpažinimo modelis klausė 12 kasdienių sakinių. Žodžių klaidų: be pataisų <b>7,7 %</b>, su „s“ pataisa <b>4,4 %</b>, su kirčiais <b>1,1 %</b>. Išbandyta Xiaomi 12T Pro, Android 15, SherpaTTS 3.4.</p>
 </section>
 
-<section class="wrap">
-  <h2>Kaip įdiegti (apie 10 min.)</h2>
+<section class="wrap" id="idiegti">
+  <h2>Kaip įdiegti (apie 5 min.)</h2>
+  <p style="color:var(--muted)">Reikia Android 10 ar naujesnio (ausims — Android 12). Abu failai — <a href="https://github.com/RobertasTa/android-lt/releases/latest">leidime</a>.</p>
+  <h3 style="margin:22px 0 8px">Balsas — „Ingutė“ (<code>Ingute-1.0.apk</code>, 151 MB)</h3>
   <ol>
+    <li><b>Parsisiųsk į telefoną</b> <code>Ingute-1.0.apk</code> ir paspausk jį (naršyklėje arba failų tvarkyklėje, aplanke „Download“). Telefonas paklaus, ar leisti diegti iš šio šaltinio — <b>leisk</b>.</li>
+    <li><b>„Įdiegti“.</b> Atidaryti programos nereikia: Ingutė įsidiegia pati — su „s“ pataisa ir kirčių žodynu.</li>
+    <li><b>Telefono nustatymai</b> → „Teksto į kalbą išvestis“ → variklis <b>Ingutė</b>, kalba <b>lietuvių</b> → „Klausyti pavyzdžio“.</li>
+  </ol>
+  <h3 style="margin:26px 0 8px">Ausys — „Parakeetype LT“ (<code>Parakeetype-LT-0.5.0-lt2.apk</code>, 59 MB)</h3>
+  <ol>
+    <li><b>Parsisiųsk ir įdiek.</b> Jei „Google Play Protect“ pasiūlys programą patikrinti, spausk <b>„Patikrinti“</b>, po to <b>„Įdiegti“</b> (mums atsakė: „Atrodo, kad programa saugi“).</li>
+    <li><b>Atidaryk</b>, leisk mikrofoną, prie „Modelis neįdiegtas“ spausk <b>„Įdiegti“</b>.</li>
+    <li>Kortelėje <b>„Parakeet Lithuanian (Default)“</b>: <b>„Atsisiųsti naršyklėje“</b> (955 MB, geriau per Wi-Fi) → kai atsisiųs, <b>„Importuoti modelio failą“</b> → <code>parakeet-lt-kmynas-int8.zip</code>. Po minutės — <b>„Aktyvus modelis“</b>; archyvą galima ištrinti.</li>
+    <li>Pradžios ekrane prie „Klaviatūra neįgalinta“ → <b>„Atidaryti nustatymus“</b> → įjunk Parakeetype. Android įspės, kad klaviatūra „gali rinkti viską, ką įvedate“ — taip rodoma kiekvienai klaviatūrai; ši interneto leidimo neturi, tad tekstas iš telefono neišeina → <b>OK</b>.</li>
+    <li><b>Diktuok</b>: bet kuriame teksto lauke Gboard'e ilgai laikyk 🌐 → <b>„Parakeetype balso įvestis“</b>, laikyk mikrofono mygtuką ir kalbėk.</li>
+  </ol>
+  <div class="shots" style="margin-top:20px;max-width:920px">
+    <img src="apk_ingute_nustatymai.jpg" alt="Nustatymai „Синтез речи“: variklis Ingutė, kalba lietuvių">
+    <img src="apk_modelis.jpg" alt="Parakeetype LT modelių sąrašas lietuviškai: Parakeet Lithuanian (Default) pirmas ir pažymėtas">
+    <img src="apk_aktyvus.jpg" alt="Po importo kortelė rodo „Aktyvus modelis“, pranešimas „Modelis importuotas“">
+    <img src="apk_padiktuota.jpg" alt="Užrašuose padiktuota: „Labas, tai yra lietuviškos ausys Android telefonui“">
+  </div>
+  <p class="zyma">Abi programos pasirašytos mūsų raktu (sertifikato SHA-256 <code>8679aa5f…afaf7f</code>), failų sumos — <code>SHA256SUMS.txt</code> leidime. Programų ekranuose — lietuviškai, sistemos languose — rusiškai (tokia telefono kalba). Išbandyta Xiaomi 12T Pro, Android 15.</p>
+  <details style="margin-top:22px">
+  <summary><b>Pažengusiems: balsas per SherpaTTS iš F-Droid</b> (be mūsų programos, apie 10 min.)</summary>
+  <ol style="margin-top:12px">
     <li><b>Įsidiek SherpaTTS iš F-Droid</b> — Google Play'uje jos <b>nėra</b>, ten paieška rodo kitas, reklamines programas. Failas: <a href="https://f-droid.org/repo/org.woheller69.ttsengine_34.apk">org.woheller69.ttsengine_34.apk</a> (3.4, 91 MB). Tikroji programa vadinasi <b>SherpaTTS</b>, be reklamų.</li>
     <li><b>Parsisiųsk į telefoną</b> iš <a href="https://github.com/RobertasTa/android-lt/releases/latest">leidimo</a> du failus: <code>lt_LT-ingute-medium.onnx</code> ir <code>tokens.txt</code>.</li>
     <li><b>SherpaTTS → „INSTALL PIPER MODEL FROM SD“</b>: kalbos kodas <code>lit</code>, pavadinimas <code>Ingute</code>, modelis ir tokens failai → OK.</li>
@@ -108,10 +133,7 @@
     <img src="sherpatts_main.jpg" alt="SherpaTTS pagrindinis langas: kalba lit (Ingute), greitis 1,0 ir lietuviškas pavyzdinis sakinys">
   </div>
   <p class="zyma">Ingutė jau kalba su „s“ pataisa. Kirčiams — dar vienas žingsnis per kompiuterį.</p>
-</section>
-
-<section class="wrap">
-  <h2>5. Kirčiai — per kompiuterį</h2>
+  <h3 style="margin:22px 0 8px">5. Kirčiai — per kompiuterį</h3>
   <p style="color:var(--muted)">Naujesni Android'ai neleidžia failų tvarkyklei rašyti į kitų programų aplankus, todėl <code>lt_dict</code> dedamas su <a href="https://developer.android.com/tools/releases/platform-tools">Google adb</a>. Telefone: Nustatymai → Apie telefoną → 7 kartus paspausk versijos numerį → kūrėjo nustatymuose įjunk „USB derinimas“ → prijunk laidu ir patvirtink.</p>
   <p style="color:var(--muted);margin-top:12px">Pirma patikrink, ar tavo SherpaTTS žodynas originalus (turi būti <code>5426503daf0a29836d0f168d38b38581</code>; jei kitoks — nekeisk):</p>
 <pre><code>adb shell md5sum /sdcard/Android/data/org.woheller69.ttsengine/files/espeak-ng-data/lt_dict</code></pre>
@@ -120,28 +142,18 @@
 adb push lt_dict /sdcard/Android/data/org.woheller69.ttsengine/files/espeak-ng-data/lt_dict
 adb shell am force-stop org.woheller69.ttsengine</code></pre>
   <p class="zyma">Paklausyk: „Dabar labai gera diena, nes Lietuvos rinktinė laimėjo.“ Grąžinti — <code>lt_dict_orig</code> pervadinti atgal į <code>lt_dict</code>. Iš naujo įdiegus SherpaTTS, šį žingsnį reikia kartoti.</p>
+  </details>
 </section>
 
 <section class="wrap" id="ausys">
   <h2>Ausys — diktavimas lietuviškai</h2>
-  <p style="color:var(--muted)">Nuo 1.1.0: kalbi į telefoną lietuviškai, ir tekstas atsiranda bet kuriame teksto lauke. Tai daro atviro kodo balso klaviatūra <a href="https://github.com/theScrabi/Parakeetype">Parakeetype</a> (F-Droid): kalbą ji atpažįsta pačiame telefone ir interneto leidimo neturi. Jos numatytasis modelis lietuviškai girdi prastai, o mūsų archyvas <code>parakeet-lt-kmynas-int8.zip</code> (955 MB) duoda jai lietuviškas ausis.</p>
+  <p style="color:var(--muted)">Kalbi į telefoną lietuviškai, ir tekstas atsiranda bet kuriame teksto lauke. Tai daro atviro kodo balso klaviatūra <a href="https://github.com/theScrabi/Parakeetype">Parakeetype</a> (theScrabi): kalbą ji atpažįsta pačiame telefone ir interneto leidimo neturi. Jos numatytasis modelis lietuviškai girdi prastai, o mūsų archyvas <code>parakeet-lt-kmynas-int8.zip</code> (955 MB) duoda jai lietuviškas ausis. Mūsų „Parakeetype LT“ — ta pati programa, kurioje lietuviškas modelis pirmas ir numatytasis.</p>
   <table>
     <tr><th>žodžių klaidų dalis</th><th>FLEURS (986 sakiniai)</th><th>trumpos komandos (127)</th></tr>
     <tr><td>Parakeetype numatytasis modelis</td><td>27,1 %</td><td>80,4 %</td></tr>
     <tr><td>su šiomis ausimis</td><td>10,6 %</td><td>17,0 %</td></tr>
   </table>
-  <p class="zyma"><b>Būsena (2026-10-29):</b> kad F-Droid Parakeetype priimtų archyvą, jos autorius turi sujungti mūsų pasiūlymą <a href="https://github.com/theScrabi/Parakeetype/pull/1">theScrabi/Parakeetype#1</a>. Iki tol programą su lietuvišku modeliu galima susikompiliuoti pačiam; kaip, rašoma <a href="https://github.com/RobertasTa/android-lt#pasidaryk-pats-kol-pasiūlymas-nesujungtas">README</a>.</p>
-  <ol style="margin-top:18px">
-    <li><b>Parsisiųsk į telefoną</b> <code>parakeet-lt-kmynas-int8.zip</code> iš <a href="https://github.com/RobertasTa/android-lt/releases/latest">leidimo</a>.</li>
-    <li><b>Parakeetype</b>: įjunk klaviatūrą, leisk mikrofoną → „Įdiegti“ → slink iki kortelės <b>Parakeet Lithuanian</b> → „Importuoti modelio failą“ → „Nustatyti kaip aktyvų“.</li>
-    <li><b>Diktuok</b>: teksto lauke perjunk klaviatūrą į „Parakeetype balso įvestis“ (Gboard'e ilgai laikyk 🌐), laikyk mikrofono mygtuką ir kalbėk.</li>
-    <li><b>Atgal į įprastą klaviatūrą</b> — mažas klaviatūros ženkliukas dešinėje, virš Enter.</li>
-  </ol>
-  <div class="shots" style="margin-top:20px;max-width:820px">
-    <img src="parakeetype_model.jpg" alt="Parakeetype modelių sąrašas: Parakeet Lithuanian pažymėtas kaip aktyvus modelis">
-    <img src="parakeetype_switch.jpg" alt="Klaviatūros keitimo langelis su pasirinkimu „Parakeetype balso įvestis“">
-    <img src="parakeetype_dictation.jpg" alt="Užrašuose padiktuota: „Labas testas yra. Tikrinam, kaip ausys veikia.“">
-  </div>
+  <p class="zyma"><b>Kaip įdiegti</b> — <a href="#idiegti">aukščiau</a>, „Parakeetype LT“. Kai Parakeetype autorius sujungs mūsų pasiūlymą <a href="https://github.com/theScrabi/Parakeetype/pull/1">theScrabi/Parakeetype#1</a>, lietuvišką modelį siūlys ir F-Droid Parakeetype. Susikompiliuoti pačiam — <a href="https://github.com/RobertasTa/android-lt#pasidaryk-pats">README</a>.</p>
   <p class="zyma">Tik lietuvių kalba; telefone užima apie 910 MB, reikia Android 12 ar naujesnio. Išbandyta Roberto telefone (Xiaomi 12T Pro, Android 15).</p>
 </section>
 
@@ -150,7 +162,7 @@ adb shell am force-stop org.woheller69.ttsengine</code></pre>
   <p style="color:var(--muted)">Įdiegti dar nereiškia, kad telefonas pats pradės kalbėti ar klausyti. Čia — ką padaryti vieną kartą ir kaip paskui naudotis. Meniu pavadinimai telefonuose šiek tiek skiriasi, todėl paprasčiausia juos rasti <b>nustatymų paieškoje</b>. Ekranai — iš Xiaomi telefono rusiška kalba.</p>
   <h3 style="margin:22px 0 8px">Kad telefonas skaitytų Ingutės balsu</h3>
   <ol>
-    <li><b>Ingutė — telefono balsas</b> (vieną kartą). Nustatymų paieškoje įrašyk „teksto į kalbą“ (rusiškai „синтез“). <b>Numatytasis variklis</b> → <b>SherpaTTS</b> (Android perspės, kad variklis „gali rinkti tekstą“ — taip rodo kiekvienam ne Google balsui; spausk OK). <b>Kalba</b> → <b>lietuvių</b>. <b>Klausyti pavyzdžio</b> — turi prabilti Ingutė.</li>
+    <li><b>Ingutė — telefono balsas</b> (vieną kartą). Nustatymų paieškoje įrašyk „teksto į kalbą“ (rusiškai „синтез“). <b>Numatytasis variklis</b> → <b>Ingutė</b> (arba SherpaTTS, jei diegei pažengusiųjų keliu; Android perspės, kad variklis „gali rinkti tekstą“ — taip rodo kiekvienam ne Google balsui; spausk OK). <b>Kalba</b> → <b>lietuvių</b>. <b>Klausyti pavyzdžio</b> — turi prabilti Ingutė.</li>
     <li><b>Kad perskaitytų bet kokį tekstą ekrane</b> (vieną kartą). Nustatymų paieškoje įrašyk „Select to Speak“ (rusiškai „озвуч“ → „Озвучивание при нажатии“), įjunk jungiklį ir leisk matyti ekraną. Ekrano krašte atsiras mėlynas mygtukas.</li>
     <li><b>Kasdien</b>: atsidaryk SMS, laišką ar straipsnį → paspausk mėlyną mygtuką → paliesk pastraipą, ir Ingutė ją perskaitys (▶ — visą ekraną, ■ — sustabdo).</li>
   </ol>
@@ -171,7 +183,7 @@ adb shell am force-stop org.woheller69.ttsengine</code></pre>
 
 <section class="wrap">
   <h2>Privatumas — tiesiai</h2>
-  <p style="color:var(--muted)">Tekstas ir garsas iš telefono <b>neišeina</b>: balsas sukasi telefone. Šis paketas — tik failai; jokios programos, kuri kur nors jungtųsi, jame nėra. SherpaTTS į internetą eina tik tada, kai pats spaudi siųstis kalbą iš jos sąrašo. Parakeetype interneto leidimo neturi visai: modelio archyvą parsisiunti pats.</p>
+  <p style="color:var(--muted)">Tekstas ir garsas iš telefono <b>neišeina</b>: balsas ir ausys sukasi telefone. „Ingutė“ (kaip ir SherpaTTS) į internetą eina tik tada, kai pats spaudi siųstis kitą kalbą iš jos sąrašo — Ingutė jau viduje. „Parakeetype LT“ interneto leidimo neturi visai: modelio archyvą parsisiunčia naršyklė.</p>
 </section>
 
 <section class="wrap">
@@ -181,7 +193,7 @@ adb shell am force-stop org.woheller69.ttsengine</code></pre>
     <li>Perduodama tik kirčio vieta, ne priegaidė.</li>
     <li>Apie 9 % žodžių žodyne nėra — jiems kirtį spėja eSpeak NG.</li>
     <li><code>lt_dict</code> sudarytas SherpaTTS 3.4 — kitai versijai pirma patikrink md5.</li>
-    <li>SherpaTTS kūrėjai nesutinka su Google tapatybės reikalavimu, kuris visame pasaulyje planuojamas 2027 m.; jų programa apie tai įspėja pati.</li>
+    <li>SherpaTTS kūrėjai nesutinka su Google tapatybės reikalavimu, kuris visame pasaulyje planuojamas 2027 m.; jų programa apie tai įspėja pati. Tą patį jų įspėjimą (angliškai) rodo ir abi mūsų programos; kaip pasielgsim mes, nuspręsim iki 2027 m.</li>
     <li>Tai <b>sintetinis balsas</b> — natūralus, bet ne žmogus.</li>
   </ul>
 </section>
@@ -189,6 +201,7 @@ adb shell am force-stop org.woheller69.ttsengine</code></pre>
 <section class="wrap">
   <h2>Licencijos</h2>
   <ul>
+    <li><b>Programos</b> — GPL-3.0, kaip ir jų originalai: „Ingutė“ — SherpaTTS (woheller69) su mūsų pakeitimais (<a href="https://github.com/RobertasTa/ttsEngine/tree/ingute">kodas</a>); „Parakeetype LT“ — Parakeetype (theScrabi) su mūsų pakeitimais (<a href="https://github.com/RobertasTa/Parakeetype/tree/lt-build">kodas</a>).</li>
     <li><b>Balsas</b> — NewGenLTU Open RAIL-D 1.0: naudoti galima laisvai ir nemokamai, komercinio naudojimo nedraudžia, galioja naudojimo apribojimai; perduodant toliau kartu perduoti <a href="https://github.com/RobertasTa/android-lt/blob/main/LICENSE-VOICE">LICENSE-VOICE</a> ir nurodyti kilmę. Ingutė išaugo iš Reginutės modelio, mūsų Python įrankiais.</li>
     <li><b><code>lt_dict</code></b> ir jo šaltiniai — GPL-3.0 (eSpeak NG duomenys). Kirčių vietos — iš dviejų CC BY 4.0 darbų: LIEPA garsyno anotacijos (Vilniaus universitetas) ir Arūno Smaliuko <code>g2p-lt-lexicon</code> (<a href="https://github.com/RobertasTa/android-lt/blob/main/THIRD_PARTY.md">THIRD_PARTY.md</a>).</li>
     <li><b>Ausys</b> — CC BY 4.0: NVIDIA Parakeet TDT 0.6B v3, lietuviškai apmokytas Kristijono Jakubsono („kmynas v4“, LIEPA-3); mūsų pakeitimai surašyti archyvo <code>NOTICE.txt</code>. Silero VAD archyve — MIT. Parakeetype — atskira programa (GPL-3.0).</li>

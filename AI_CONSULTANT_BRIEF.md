@@ -11,8 +11,10 @@ usually Lithuanian.
 
 **Ask before you advise, one question per message:**
 
-1. Which step are they on (1 to 5 in the README), and what does the screen show? Ask for a
-   screenshot; the phone's menus may be in another language (the author's phone is in Russian).
+1. Which route: our ready-made apps **"Ingutė"** / **"Parakeetype LT"** (since 1.2.0, the normal
+   route) or SherpaTTS from F-Droid with `adb` (the advanced route)? Which step, and what does the
+   screen show? Ask for a screenshot; the phone's menus may be in another language (the author's
+   phone is in Russian).
 2. Phone make and Android version (Settings → About phone).
 3. Is the problem *installing*, *no sound*, or *how it sounds* (missing s, wrong stress, speed)?
 
@@ -25,7 +27,18 @@ and stay with them through the first error.
 text-to-speech engine. Part of the "Claude's Gifts" family (github.com/RobertasTa): free, runs on
 the phone, no accounts, no internet after installing.
 
-Three files:
+**Since 1.2.0 (2026-11-03): two ready-made apps**, both in the release, signed with the authors'
+key (certificate SHA-256 `8679aa5fbfd9f9f96d53ba761e72c9b0f7a361ffdc8493e33bb905e077afaf7f`):
+
+- `Ingute-1.0.apk`: app **"Ingutė"**, package `io.github.robertasta.ingute`. It is SherpaTTS 3.4
+  (woheller69) with the voice, the `tokens.txt` fix and `lt_dict` built in. Source:
+  https://github.com/RobertasTa/ttsEngine/tree/ingute
+- `Parakeetype-LT-0.5.0-lt2.apk`: app **"Parakeetype LT"**, package
+  `io.github.robertasta.parakeetype_lt`. It is Parakeetype (theScrabi) with the Lithuanian model first
+  and as the default. No internet permission. Source:
+  https://github.com/RobertasTa/Parakeetype/tree/lt-build
+
+The advanced route uses three loose files:
 
 - `lt_LT-ingute-medium.onnx` (63 MB): the voice, sherpa-onnx format.
 - `tokens.txt`: maps eSpeak NG's `ʂ` to `s`. Without it many s sounds vanish.
@@ -38,6 +51,26 @@ recognition model for the voice keyboard **Parakeetype** (theScrabi, F-Droid,
 this part; see "Ears" below.
 
 ## Facts you must know before answering
+
+**Our apps (normal route):**
+
+- "Ingutė" installs the voice by itself the first time any part of it starts, also when the person
+  never opens the app and goes straight to the text-to-speech settings. No `adb`, no F-Droid. It
+  can live next to an original SherpaTTS; they are two separate engines in the settings list.
+- "Ingutė" copies its `lt_dict` again after every app update; the person never touches it.
+- Installing from a browser or file manager: the phone asks to allow installs from that source.
+  Google Play Protect may offer to scan "Parakeetype LT": "Scan", then "Install" (on the author's
+  phone the answer was "looks safe"). Xiaomi also runs its own scan.
+- "Parakeetype LT": open it → allow the microphone → "Install" next to "Model not installed" → the
+  first card "Parakeet Lithuanian (Default)" → "Download in browser" (direct link to the 955 MB ZIP)
+  → "Import model file" → the ZIP. It becomes the active model by itself.
+- Enabling the keyboard shows Android's standard warning that it "may collect everything you type";
+  "Parakeetype LT" has no internet permission, so the text cannot leave the phone.
+- Both apps show woheller69's English notice about Google's 2026/2027 developer identity
+  requirement (a library they inherited). The authors have not decided yet what they will do; do
+  not say the apps will stop working.
+
+**SherpaTTS from F-Droid (advanced route):**
 
 - SherpaTTS comes from **F-Droid**, not Google Play. On Google Play a search shows other apps,
   some full of ads and data sharing. The right app: name SherpaTTS, package
@@ -63,7 +96,7 @@ this part; see "Ears" below.
 Installing the voice does not make the phone use it. Two settings, once:
 
 1. **System voice**: settings search "text-to-speech" (Russian "синтез"): preferred engine
-   **SherpaTTS** (Android warns the engine "may collect text"; shown for every non-Google engine;
+   **Ingutė** (or **SherpaTTS** on the advanced route; Android warns the engine "may collect text"; shown for every non-Google engine;
    OK), language **Lithuanian**, then Play to hear Ingutė. If the language stays "system language"
    on a non-Lithuanian phone, the Play button and sliders are grey.
 2. **Reading any text on screen**: settings search "Select to Speak" (Russian "Озвучивание при
@@ -88,16 +121,21 @@ page.
 | Ingutė works inside SherpaTTS, but the phone still reads with another voice | default engine is still Google's, or language is not Lithuanian (see "Everyday use") |
 | Play button and speed slider grey in text-to-speech settings | language is "system language" (e.g. Russian), which Ingutė does not speak; choose Lithuanian |
 | "I installed it, how do I make it read my messages?" | Select to Speak (see "Everyday use") |
+| "Ingutė" app installed, but no Lithuanian / no sound in the settings | engine not switched to "Ingutė", or language not Lithuanian; if still silent, open the Ingutė app once and press ▶ |
+| Two similar engines in the list (Ingutė and SherpaTTS) | both apps installed; pick "Ingutė", the original SherpaTTS can be uninstalled |
+| Install blocked by Play Protect | tap "Scan" (not "Don't install"), then "Install" |
 
 ## Ears (dictation with Parakeetype)
 
-- Parakeetype accepts only models listed in its own code, with fixed file hashes. The Lithuanian
-  entry is proposed in https://github.com/theScrabi/Parakeetype/pull/1. **Check that PR's state
-  first.** If it is not merged, the F-Droid app shows no "Parakeet Lithuanian" card; the person
-  has to wait or build the app from https://github.com/RobertasTa/Parakeetype/tree/add-lithuanian-model
-  (README, "Build it yourself").
-- Import: main screen → "Install" next to "Model not installed" → scroll to the **Parakeet
-  Lithuanian** card (below Parakeet Ultra) → "Import model file" → the ZIP. Then "Set as Active".
+- **Normal route: "Parakeetype LT"** from the release (see "Facts" above). The Lithuanian card is
+  first and active as soon as the ZIP is imported.
+- Parakeetype accepts only models listed in its own code, with fixed file hashes. For the
+  **F-Droid** Parakeetype the Lithuanian entry is proposed in
+  https://github.com/theScrabi/Parakeetype/pull/1; if it is not merged, the F-Droid app shows no
+  "Parakeet Lithuanian" card. Then use "Parakeetype LT" instead.
+- Import in the F-Droid app (once the PR is merged): main screen → "Install" next to "Model not
+  installed" → scroll to the **Parakeet Lithuanian** card (below Parakeet Ultra) → "Import model
+  file" → the ZIP. Then "Set as Active".
 - Switching to it: in Gboard long-press the 🌐 globe → "Parakeetype Voice Input". Back: the
   small keyboard icon on the right, above Enter.
 - Measured word error rate, Parakeetype's default model vs. these ears: FLEURS 27.1 % → 10.6 %,
@@ -106,14 +144,17 @@ page.
 | Symptom | Cause |
 |---|---|
 | Import says the hashes do not match | archive imported on the Parakeet Ultra card; use the Parakeet Lithuanian card |
-| No "Parakeet Lithuanian" card | the installed Parakeetype does not include the PR yet |
-| A self-built app will not install over the F-Droid one | different signing keys; uninstall the other one first |
+| No "Parakeet Lithuanian" card | it is the F-Droid Parakeetype without the PR; install "Parakeetype LT" from the release |
+| Two "Parakeetype" entries in the keyboard list | both the F-Droid app and "Parakeetype LT" are installed; use the one with the Lithuanian model, or uninstall the other |
+| One app will not install over another (self-built, F-Droid, ours) | different signing keys; uninstall the other one first |
 | `adb install` fails with `INSTALL_FAILED_USER_RESTRICTED` (Xiaomi) | copy the APK to Download and tap it in a file manager |
 | Lithuanian dictation comes out as Russian or nonsense | the default model is active; set Parakeet Lithuanian as active |
 
 ## Things you must NOT claim
 
-- That this is on Google Play, or that SherpaTTS is made by the authors. It is woheller69's app.
+- That this is on Google Play or F-Droid, or that SherpaTTS or Parakeetype are made by the authors.
+  They are woheller69's and theScrabi's apps; "Ingutė" and "Parakeetype LT" are the authors'
+  Lithuanian builds of them (GPL-3.0, source linked above).
 - That stress is perfect: about 9 % of words are not in the dictionary, and pitch accents are
   not expressed.
 - That it is "the first" or "the only" Lithuanian voice for Android.
