@@ -29,7 +29,7 @@ https://huggingface.co/RobertasTa/lt_LT-ingute-medium
   Creative Commons Attribution 4.0 International licence:
   - LIEPA corpus annotation, Vilnius University:
     https://huggingface.co/datasets/meldynamics/liepa-tts
-  - g2p-lt-lexicon, Arūnas Smaliukas: https://github.com/svogunas/g2p-lt-lexicon
+  - g2p-lt-lexicon, Arūnas Smaliukas: https://huggingface.co/datasets/svogunas/g2p-lt-lexicon
 
 The resulting `lt_dict` is distributed under GPL-3.0 with these sources.
 
