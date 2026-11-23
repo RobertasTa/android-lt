@@ -17,10 +17,13 @@ computer → [Installing](#installing-about-5-minutes)
 
 ## What is here
 
-- **`Ingute-1.0.apk`** (151 MB): the app "Ingutė", a Lithuanian voice for the phone. The voice, the
+- **`Ingute-1.1.apk`** (151 MB): the app "Ingutė", a Lithuanian voice for the phone. The voice, the
   "s" fix and the stress dictionary are already inside; once installed it becomes the phone's voice
   by itself. It is [SherpaTTS](https://github.com/woheller69/ttsEngine) 3.4 (woheller69) with our
   Lithuanian additions ([source](https://github.com/RobertasTa/ttsEngine/tree/ingute)).
+  **New in 1.1:** Cyrillic and other non-Latin text no longer turns into babble — Cyrillic is read in
+  Lithuanian letters, other scripts are skipped; TalkBack no longer waits for an interrupted phrase to end.
+  Ingutė is made for Lithuanian text — for Russian, use a Russian voice.
 - **`Parakeetype-LT-0.5.0-lt2.apk`** (59 MB): the voice keyboard "Parakeetype LT" for Lithuanian
   dictation. It is [Parakeetype](https://github.com/theScrabi/Parakeetype) (theScrabi) with the
   Lithuanian model first and as the default ([source](https://github.com/RobertasTa/Parakeetype/tree/lt-build)).
@@ -44,7 +47,7 @@ Android 10 or newer (Android 12 for the ears). Both files are in the
 
 ### Voice: "Ingutė"
 
-1. **Download** `Ingute-1.0.apk` to the phone and tap it (in the browser or a file manager, in the
+1. **Download** `Ingute-1.1.apk` to the phone and tap it (in the browser or a file manager, in the
    Download folder). The phone asks whether to allow installing apps from this source: **allow** it.
 2. **Install.** No need to open the app: Ingutė installs herself.
 3. **Phone settings** → "Text-to-speech output" → engine **Ingutė**, language **Lithuanian** →

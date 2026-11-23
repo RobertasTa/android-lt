@@ -19,10 +19,13 @@ nei laido, nei kompiuterio → [Kaip įdiegti](#kaip-įdiegti-apie-5-min)
 
 ## Kas čia yra
 
-- **`Ingute-1.0.apk`** (151 MB) — programa „Ingutė“: lietuviškas telefono balsas. Viduje jau yra
+- **`Ingute-1.1.apk`** (151 MB) — programa „Ingutė“: lietuviškas telefono balsas. Viduje jau yra
   Ingutės balsas, „s“ pataisa ir kirčių žodynas; įdiegta ji pati tampa telefono balsu. Tai
   [SherpaTTS](https://github.com/woheller69/ttsEngine) 3.4 (woheller69) su mūsų lietuviškais priedais
   ([kodas](https://github.com/RobertasTa/ttsEngine/tree/ingute)).
+  **Nauja 1.1 versijoje:** kirilica ir kiti ne lotyniški rašmenys nebevirsta burbėjimu — kirilica skaitoma
+  lietuviškomis raidėmis, kitų raštų rašmenys praleidžiami; TalkBack nebelaukia nutrauktos frazės pabaigos.
+  Ingutė skirta lietuviškiems tekstams — rusiškiems reikia rusiško balso.
 - **`Parakeetype-LT-0.5.0-lt2.apk`** (59 MB) — balso klaviatūra „Parakeetype LT“: lietuviškas diktavimas.
   Tai [Parakeetype](https://github.com/theScrabi/Parakeetype) (theScrabi), kurioje lietuviškas modelis
   yra pirmas ir numatytasis ([kodas](https://github.com/RobertasTa/Parakeetype/tree/lt-build)).
@@ -43,7 +46,7 @@ Reikia Android 10 ar naujesnio (ausims — Android 12). Abu failai — [leidime]
 
 ### Balsas — „Ingutė“
 
-1. **Parsisiųsk į telefoną** `Ingute-1.0.apk` ir paspausk jį (naršyklėje arba failų tvarkyklėje,
+1. **Parsisiųsk į telefoną** `Ingute-1.1.apk` ir paspausk jį (naršyklėje arba failų tvarkyklėje,
    aplanke „Download“). Telefonas paklaus, ar leisti diegti programas iš šio šaltinio — **leisk**.
 2. **„Įdiegti“.** Atidaryti programos nereikia: Ingutė įsidiegia pati.
 3. **Telefono nustatymuose** → „Teksto į kalbą išvestis“ → variklis **Ingutė**, kalba **lietuvių** →

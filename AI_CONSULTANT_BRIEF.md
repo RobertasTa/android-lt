@@ -30,9 +30,14 @@ the phone, no accounts, no internet after installing.
 **Since 1.2.0 (2026-11-03): two ready-made apps**, both in the release, signed with the authors'
 key (certificate SHA-256 `8679aa5fbfd9f9f96d53ba761e72c9b0f7a361ffdc8493e33bb905e077afaf7f`):
 
-- `Ingute-1.0.apk`: app **"Ingutė"**, package `io.github.robertasta.ingute`. It is SherpaTTS 3.4
+- `Ingute-1.1.apk`: app **"Ingutė"**, package `io.github.robertasta.ingute`. It is SherpaTTS 3.4
   (woheller69) with the voice, the `tokens.txt` fix and `lt_dict` built in. Source:
   https://github.com/RobertasTa/ttsEngine/tree/ingute
+  1.1 (Android LT v1.3.0, 2026-11-23): before synthesis, `LithuanianText.clean` transliterates Cyrillic and
+  Greek into Lithuanian letters and drops other scripts and private-use icon glyphs ("užsienio rašmenys" if
+  only dropped letters were left) — espeak-ng `lt` otherwise names each such letter in English, which
+  Ingutė turns into babble (issue #1). `onStop()` now stops generation. Ingutė is a Lithuanian voice,
+  not a polyglot: Russian text needs a Russian voice.
 - `Parakeetype-LT-0.5.0-lt2.apk`: app **"Parakeetype LT"**, package
   `io.github.robertasta.parakeetype_lt`. It is Parakeetype (theScrabi) with the Lithuanian model first
   and as the default. No internet permission. Source:
